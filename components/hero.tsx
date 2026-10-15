@@ -9,7 +9,7 @@ export function Hero() {
     >
       <div className="flex flex-col justify-center">
         <p className="text-sm font-medium tracking-[0.12em] text-ink-muted uppercase">
-          Обжарка кофе в Минске с 2019 года
+          Свежеобжаренный кофе в Минске с 2019 года
         </p>
         <h1
           id="hero-heading"
