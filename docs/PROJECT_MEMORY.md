@@ -22,7 +22,11 @@
 
 
 
-Ветка: `feat/lead-api` (от `feat/landing-ui`). Remote, push, merge и deploy не выполнялись.
+Ветка приложения: `feat/lead-api` (от `feat/landing-ui`). На `main` — `1c255da`: бриф, правила, журнал и `.gitignore`.
+
+
+
+Публичный репозиторий: https://github.com/viktor-qatester/kvarta. ChatGPT создал его пустым через браузер. Виктор выбрал способ входа и подтвердил авторизацию. Локальный remote на момент записи не добавлен.
 
 
 
@@ -114,6 +118,6 @@ API: только `POST /api/lead`. Публичного просмотра за
 
 
 
-GitHub remote, push, Vercel, Lighthouse. `README.md` обновлён под проект «Кварта» (не шаблон create-next-app).
+Первая отправка `main`, затем `feat/lead-api`, в `https://github.com/viktor-qatester/kvarta.git`. Без force, merge и deploy. После отправки — Vercel и Lighthouse. `README.md` обновлён под проект «Кварта» (не шаблон create-next-app).
 
 
