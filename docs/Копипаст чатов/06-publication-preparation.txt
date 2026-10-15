@@ -1,0 +1,1259 @@
+# Project publication preparation
+
+## User
+
+Готовим «Кварту» к публикации. Прочитай AGENTS.md и память проекта.
+
+Пока ничего не публикуй, не выполняй push или merge.
+
+1. Проверь текущую ветку, git status и наличие remote.
+2. Проверь, не попали ли в отслеживаемые файлы секреты,
+   особенно в журнал и документацию. Значения секретов не выводи.
+3. Определи, готов ли проект к размещению на Vercel:
+   команды сборки, необходимые переменные окружения.
+   DATABASE_URL должен оставаться серверным.
+4. Сообщи конкретный порядок: создание GitHub-репозитория,
+   первая отправка кода, подключение Vercel, настройка DATABASE_URL.
+   Укажи, что сделаешь сам, а где Виктору потребуется браузер.
+
+Не запускай повторный общий аудит и не меняй приложение.
+Дай короткий отчёт и остановись перед внешними действиями.
+
+## Assistant
+
+Сначала прочитаю память проекта и сверю git: ветку, статус и remote. Публикацию, push и merge не запускаю.
+
+### Tool Read File V2
+
+```
+{"path":"C:\\Users\\Victor\\Documents\\Kravta\\docs\\PROJECT_MEMORY.md"}
+```
+
+### Tool Read File V2
+
+```
+{"path":"C:\\Users\\Victor\\Documents\\Kravta\\AGENTS.md"}
+```
+
+### Tool Glob File Search
+
+```
+{"targetDirectory":"C:\\Users\\Victor\\Documents\\Kravta","globPattern":"docs/BUILD_GUIDE.md"}
+```
+
+## Assistant
+
+Память прочитана: ветка `feat/lead-api`, remote ещё не было. Сверяю git и ищу секреты в отслеживаемых файлах, значения не вывожу.
+
+### Tool Run Terminal Command V2
+
+### Tool Glob File Search
+
+```
+{"targetDirectory":"C:\\Users\\Victor\\Documents\\Kravta","globPattern":"package.json"}
+```
+
+### Tool Glob File Search
+
+```
+{"targetDirectory":"C:\\Users\\Victor\\Documents\\Kravta","globPattern":".env*"}
+```
+
+### Tool Ripgrep Raw Search
+
+```
+{"pattern":"DATABASE_URL|process\\.env","path":"C:\\Users\\Victor\\Documents\\Kravta","glob":"*.{ts,tsx,js,mjs,md,example,json}","caseInsensitive":false,"multiline":false,"toolCallId":"call-e2654701-484f-4ed1-a061-3f6e7e1e839c-6\nfc_4caa564d-7068-9726-9637-d521508e817f_3","offset":0}
+```
+
+### Tool Read File V2
+
+```
+{"path":"C:\\Users\\Victor\\Documents\\Kravta\\package.json"}
+```
+
+### Tool Read File V2
+
+```
+{"path":"C:\\Users\\Victor\\Documents\\Kravta\\.env.example"}
+```
+
+### Tool Read File V2
+
+```
+{"path":"C:\\Users\\Victor\\Documents\\Kravta\\.gitignore"}
+```
+
+### Tool Read File V2
+
+```
+{"path":"C:\\Users\\Victor\\Documents\\Kravta\\lib\\db.ts"}
+```
+
+### Tool Glob File Search
+
+```
+{"targetDirectory":"C:\\Users\\Victor\\Documents\\Kravta","globPattern":"next.config.*"}
+```
+
+### Tool Ripgrep Raw Search
+
+```
+{"pattern":"NEXT_PUBLIC_","path":"C:\\Users\\Victor\\Documents\\Kravta","glob":"*.{ts,tsx,js,mjs,md,example,json,env*}","caseInsensitive":false,"multiline":false,"toolCallId":"call-aa673ffb-02c0-4f6a-9d32-de8cbdd5737d-12\nfc_71a96036-f424-9c12-b867-57d3431da1d1_5","offset":0}
+```
+
+### Tool Read File V2
+
+```
+{"path":"C:\\Users\\Victor\\Documents\\Kravta\\next.config.ts"}
+```
+
+### Tool Ripgrep Raw Search
+
+```
+{"pattern":"from [\"']@?/?.*lib/db|createLeadPool|use client","path":"C:\\Users\\Victor\\Documents\\Kravta","glob":"*.{ts,tsx}","caseInsensitive":false,"multiline":false,"toolCallId":"call-d15c0093-4216-4ae7-ad65-3b053a4e9cab-14\nfc_f9801410-6c5e-9884-ba50-74c260b1d829_1","offset":0}
+```
+
+### Tool Ripgrep Raw Search
+
+```
+{"pattern":"Vercel|GitHub|DATABASE_URL|npm run build","path":"C:\\Users\\Victor\\Documents\\Kravta\\docs\\BUILD_GUIDE.md","caseInsensitive":false,"multiline":false,"toolCallId":"call-d15c0093-4216-4ae7-ad65-3b053a4e9cab-15\nfc_f9801410-6c5e-9884-ba50-74c260b1d829_2","offset":0}
+```
+
+### Tool Read File V2
+
+```
+{"path":"C:\\Users\\Victor\\Documents\\Kravta\\README.md","limit":80}
+```
+
+### Tool Read File V2
+
+```
+{"path":"C:\\Users\\Victor\\Documents\\Kravta\\app\\api\\lead\\route.ts","limit":40}
+```
+
+### Tool Ripgrep Raw Search
+
+```
+{"pattern":"vercel\\.json|engines|output","path":"C:\\Users\\Victor\\Documents\\Kravta\\docs","glob":"*.{json,ts,mjs,md}","caseInsensitive":false,"multiline":false,"toolCallId":"call-74986700-7aa7-4342-8408-815e53f81a27-18\nfc_df606d92-395b-9cd8-83a6-df10fecc8118_1","offset":0}
+```
+
+### Tool Run Terminal Command V2
+
+### Tool Run Terminal Command V2
+
+### Tool Read File V2
+
+```
+{"path":"C:\\Users\\Victor\\Documents\\Kravta\\docs\\BUILD_GUIDE.md","offset":90,"limit":20}
+```
+
+### Tool Read File V2
+
+```
+{"path":"C:\\Users\\Victor\\Documents\\Kravta\\scripts\\lead-api-check.ts","offset":220,"limit":15}
+```
+
+### Tool Ripgrep Raw Search
+
+```
+{"pattern":"postgresql://|postgres://|DATABASE_URL=","path":"C:\\Users\\Victor\\Documents\\Kravta","glob":"*.{md,example,ts,mjs,json,sql}","caseInsensitive":false,"multiline":false,"toolCallId":"call-72e660f1-f343-409b-a7b3-bfaa7c882513-23\nfc_e03c477f-a8a7-9019-9879-78c243c17806_2","offset":0}
+```
+
+### Tool Run Terminal Command V2
+
+## Assistant
+
+Проект к публикации из терминала готов, внешние шаги не запускались. Рабочее дерево чистое, remote нет, секретов в отслеживаемых файлах нет. `DATABASE_URL` остаётся серверной переменной.
+
+**Git.** Текущая ветка — `feat/lead-api`, коммит `6fac2ce`. Незакоммиченных изменений нет. Remote не настроен, push и merge не делались. На `main` лежит только `1c255da` (бриф и правила). Приложение — на `feat/lead-api`.
+
+**Секреты.** Просмотрены 47 отслеживаемых текстовых файлов, в том числе `ai-log.md`, `docs/` и `README.md`. `.env.local` в `.gitignore` и в истории не встречается. В git есть только `.env.example` с пустым `DATABASE_URL=`. Упоминания Neon в документации — публичные адреса консоли. В `scripts/lead-api-check.ts` строка подключения указывает на `127.0.0.1` и нужна тесту сбоя. Значения секретов не выводились.
+
+**Vercel.** Отдельного `vercel.json` нет, каталог выдачи не переопределён. Команды: установка `npm install` (в репозитории есть `package-lock.json`), сборка `npm run build` (`next build`). Других переменных, кроме `DATABASE_URL`, код не читает. Её читает `lib/db.ts`, и этот модуль подключает только серверный `app/api/lead/route.ts`. Префикса `NEXT_PUBLIC_` нет. Сборка проходит без этой переменной; она нужна в рантайме при `POST /api/lead`. Миграция в сборку не входит: `npm run db:migrate` уже применялся к текущей базе Neon, на Vercel его повторять не нужно, если строка указывает на ту же базу. Регион Neon — Frankfurt. В `package.json` нет `engines`, файла `.nvmrc` нет; локально стоит Node.js v26.7.0. Версию Node на Vercel с ней не сверял.
+
+Порядок, когда дадите команду:
+
+1. **Репозиторий GitHub — браузер.** `gh` в системе нет. Создайте пустой репозиторий без README, `.gitignore` и лицензии и пришлите его URL.
+2. **Первая отправка — я, в терминале.** Добавлю `origin` и отправлю `feat/lead-api` и `main`, без merge. Если Git запросит вход, подтверждение будет в браузере.
+3. **Vercel — браузер.** Импорт этого репозитория, пресет Next.js, сборка `npm run build`, каталог выдачи по умолчанию. Пока нет команды на merge, production-ветка — `feat/lead-api`. Регион функций — Frankfurt (`fra1`), рядом с Neon.
+4. **`DATABASE_URL` — браузер, настройки Vercel.** Имя строго `DATABASE_URL`, значение из локального `.env.local`, окружение Production. В клиентский бандл его не класть.
+
+## User
+
+Виктор разрешает первую отправку проекта в созданный публичный
+репозиторий https://github.com/viktor-qatester/kvarta.
+
+Прочитай AGENTS.md и память проекта.
+
+1. Добавь короткую запись в ai-log.md и обнови память:
+   ChatGPT создал пустой публичный репозиторий через браузер,
+   Виктор выбрал способ входа и подтвердил авторизацию.
+2. Закоммить эти изменения локально.
+3. Добавь origin: https://github.com/viktor-qatester/kvarta.git.
+   Если origin уже появился с другим адресом — остановись.
+4. Отправь main и feat/lead-api, настрой upstream.
+   Первой отправь main, затем feat/lead-api.
+   Не используй force, не выполняй merge и deploy.
+5. Проверь совпадение локальных и удалённых SHA обеих веток.
+
+Отчёт: remote, отправленные ветки и SHA, git status.
+Укажи явно: приложение пока находится в feat/lead-api,
+а main содержит первоначальный бриф и правила.
+После отчёта остановись.
+
+## Assistant
+
+Разрешение на первую отправку есть. Сначала сверю правила, память и журнал, затем зафиксирую факт создания репозитория и только после этого настрою `origin`.
+
+### Tool Read File V2
+
+```
+{"path":"C:\\Users\\Victor\\Documents\\Kravta\\docs\\PROJECT_MEMORY.md"}
+```
+
+### Tool Read File V2
+
+```
+{"path":"C:\\Users\\Victor\\Documents\\Kravta\\ai-log.md","offset":1,"limit":80}
+```
+
+### Tool Read File V2
+
+```
+{"path":"C:\\Users\\Victor\\Documents\\Kravta\\docs\\BUILD_GUIDE.md","offset":180,"limit":40}
+```
+
+### Tool Run Terminal Command V2
+
+### Tool Read File V2
+
+```
+{"path":"C:\\Users\\Victor\\Documents\\Kravta\\ai-log.md","offset":220}
+```
+
+## Assistant
+
+Remote пустой, ветка `feat/lead-api`. Запишу в журнал и память факт создания репозитория — до `origin` и до отправки.
+
+### Tool Edit File V2
+
+### Tool Edit File V2
+
+### Tool Edit File V2
+
+### Tool Run Terminal Command V2
+
+### Tool Run Terminal Command V2
+
+### Tool Run Terminal Command V2
+
+### Tool Run Terminal Command V2
+
+### Tool Run Terminal Command V2
+
+## Assistant
+
+`origin` указывает на нужный адрес. Сначала отправляю `main`, затем `feat/lead-api`.
+
+### Tool Run Terminal Command V2
+
+### Tool Run Terminal Command V2
+
+### Tool Run Terminal Command V2
+
+### Tool Run Terminal Command V2
+
+## Assistant
+
+Первая отправка выполнена. Force, merge и deploy не использовались.
+
+**Remote:** `origin` — `https://github.com/viktor-qatester/kvarta.git` (fetch и push).
+
+**Ветки и SHA** совпадают локально и на GitHub:
+
+| Ветка | SHA | Upstream |
+|---|---|---|
+| `main` | `1c255da5644c5f1c74f6e504c5a29cf5df6c43f2` | `origin/main` |
+| `feat/lead-api` | `38816d3b6aab6ece5fe503babfa72064a317077f` | `origin/feat/lead-api` |
+
+Сначала ушла `main`, затем `feat/lead-api`. Коммит записи в журнале и памяти — `38816d3` на `feat/lead-api`.
+
+**git status:** ветка `feat/lead-api` совпадает с `origin/feat/lead-api`, незакоммиченных изменений нет.
+
+Приложение находится в `feat/lead-api`. В `main` — первоначальный бриф и правила (`1c255da`).
+
+## User
+
+ChatGPT по разрешению Виктора слил PR №1 в main.
+Коммит слияния: 7e3f49d9b4073bb0afa2cbfee1617e345588d84f.
+
+Проверь чистоту рабочего дерева, выполни git fetch origin,
+переключись на main и обнови её через git merge --ff-only origin/main.
+При неожиданных изменениях или расхождении остановись.
+Не меняй файлы, без push и deploy.
+Сообщи HEAD и git status.
+
+## Assistant
+
+Слияние в `main` уже сделано на GitHub. Сначала проверю, что рабочее дерево чистое, затем подтяну `origin` и обновлю локальную `main` только fast-forward.
+
+### Tool Read File V2
+
+```
+{"path":"C:\\Users\\Victor\\Documents\\Kravta\\docs\\PROJECT_MEMORY.md","limit":40}
+```
+
+### Tool Run Terminal Command V2
+
+### Tool Run Terminal Command V2
+
+### Tool Run Terminal Command V2
+
+### Tool Run Terminal Command V2
+
+## Assistant
+
+Локальная `main` обновлена fast-forward до слияния PR №1. Файлы не менялись, push и deploy не выполнялись.
+
+**HEAD:** `7e3f49d9b4073bb0afa2cbfee1617e345588d84f`  
+Сообщение: `Merge pull request #1 from viktor-qatester/feat/lead-api`. Этот SHA совпадает с `origin/main`.
+
+**git status:** ветка `main` совпадает с `origin/main`. Рабочее дерево чистое.
+
+## User
+
+Первая отправка — примерно 16:04, повторная — 16:06 по Москве.
+На сайте получены сообщения об успехе и затем о дубле.
+
+Проверяй число записей с найденным номером за фиксированный
+интервал 15 октября 2026, 16:00–16:10 по Москве,
+а не за скользящие «последние 10 минут».
+Ожидается одна заявка.
+
+## Assistant
+
+Проверю заявки в базе за фиксированное окно 16:00–16:10 МСК 15 октября 2026, а не за последние 10 минут. Сначала сверю схему и как хранится время.
+
+### Tool Read File V2
+
+```
+{"path":"C:\\Users\\Victor\\Documents\\Kravta\\db\\migrations\\001_leads.sql"}
+```
+
+### Tool Read File V2
+
+```
+{"path":"C:\\Users\\Victor\\Documents\\Kravta\\docs\\PROJECT_MEMORY.md","limit":50}
+```
+
+### Tool Ripgrep Raw Search
+
+```
+{"pattern":"created_at|phone_normalized|last_accepted","path":"C:\\Users\\Victor\\Documents\\Kravta","glob":"*.{sql,ts,mjs,md}","caseInsensitive":false,"multiline":false,"toolCallId":"call-6b923aec-2447-4f16-81c8-8923d2b85f03-49\nfc_3974ab6c-afcb-996b-b763-ba7bd307861e_2","offset":0}
+```
+
+### Tool Read File V2
+
+```
+{"path":"C:\\Users\\Victor\\Documents\\Kravta\\scripts\\migrate.mjs","limit":40}
+```
+
+### Tool Ripgrep Raw Search
+
+```
+{"pattern":"375|phone","path":"C:\\Users\\Victor\\.cursor\\projects\\c-Users-Victor-Documents-Kravta\\agent-transcripts","glob":"*.jsonl","caseInsensitive":false,"headLimit":30,"multiline":false,"toolCallId":"call-c772e44a-2bf5-4a33-85ca-a9bc839f4394-51\nfc_7b8f8bc9-7740-98de-8f17-738af40ffdbf_1","offset":0}
+```
+
+## Assistant
+
+Окно фиксированное: с 16:00 включительно до 16:10 по Москве. Считаю строки `leads` по номеру, который попадёт в этот интервал. Скользящие «последние 10 минут» не использую.
+
+### Tool Run Terminal Command V2
+
+## Assistant
+
+В `public.leads` за 15 октября 2026, с 16:00:00 включительно до 16:10:00 по Москве, у найденного номера **одна заявка**.
+
+Это единственный номер в этом окне: 13 символов, начало `+37544`. Строка создана в **16:04:01.661** по Москве, интерес — «вопрос». Второй записи в этом интервале нет. Счёт шёл по фиксированным границам, не по скользящим «последним 10 минутам».
+
+## User
+
+В папке проекта Виктор сохранил отчёт мобильного Lighthouse
+для https://kvarta-five.vercel.app/. Найди этот HTML или JSON.
+Если отчётов несколько, выбери соответствующий замеру
+15 октября около 16:12 МСК.
+
+Результаты: 70/100/100/100; FCP 1,3 с; LCP 3,1 с;
+TBT 1150 мс; CLS 0; Speed Index 2,0 с.
+
+Только диагностика, без изменения приложения:
+1. Прочитай предупреждения об условиях замера.
+2. Найди основные источники длительных задач и блокировки:
+   конкретные скрипты, время и принадлежность сайту или расширениям.
+3. Определи LCP-элемент и связанные рекомендации.
+4. Предложи максимум две небольшие правки, только если их
+   необходимость подтверждается отчётом.
+5. Укажи точное имя сохранённого файла.
+
+Не запускай общий аудит, не устанавливай зависимости,
+без коммитов, push и deploy. Дай короткий отчёт и остановись.
+
+## Assistant
+
+Ищу сохранённый отчёт Lighthouse и сверю его с замером около 16:12 МСК. Приложение не меняю.
+
+### Tool Glob File Search
+
+```
+{"targetDirectory":"C:\\Users\\Victor\\Documents\\Kravta","globPattern":"**/*lighthouse*"}
+```
+
+### Tool Glob File Search
+
+```
+{"targetDirectory":"C:\\Users\\Victor\\Documents\\Kravta","globPattern":"**/*.{html,json}"}
+```
+
+### Tool Read File V2
+
+```
+{"path":"C:\\Users\\Victor\\Documents\\Kravta\\docs\\PROJECT_MEMORY.md","limit":30}
+```
+
+### Tool Ripgrep Raw Search
+
+```
+{"pattern":"fetchTime|runtimeError|channel|benchmarkIndex|__LIGHTHOUSE_JSON__|lh-gauge__percentage","path":"C:\\Users\\Victor\\Documents\\Kravta\\docs\\lighthouse\\kvarta-five.vercel.app-20261015T161203.html","caseInsensitive":false,"headLimit":30,"multiline":false,"toolCallId":"call-b1178244-65d0-4ff8-899b-2cdcdeb1adfb-56\nfc_3520c24f-f299-9d21-af25-5170a04b72f6_0","offset":0}
+```
+
+### Tool Read File V2
+
+```
+{"path":"C:\\Users\\Victor\\Documents\\Kravta\\docs\\lighthouse\\kvarta-five.vercel.app-20261015T161203.html","limit":40}
+```
+
+## Assistant
+
+Файл один: замер `2026-10-15T13:12:03.841Z`, это 16:12 МСК. Достаю из отчёта условия, длинные задачи и элемент LCP.
+
+### Tool Run Terminal Command V2
+
+### Tool Ripgrep Raw Search
+
+```
+{"pattern":"screen emulation|Screen emulation|not be loading|slower CPU|benchmark|runWarnings|emulation was disabled|storage reset","path":"C:\\Users\\Victor\\Documents\\Kravta\\docs\\lighthouse\\kvarta-five.vercel.app-20261015T161203.html","caseInsensitive":false,"headLimit":20,"multiline":false,"toolCallId":"call-b9a570e0-3496-4ca4-b04c-b0a51378a610-59\nfc_6649a94d-22da-9604-84ff-621816955d36_0","offset":0}
+```
+
+### Tool Run Terminal Command V2
+
+### Tool Edit File V2
+
+### Tool Run Terminal Command V2
+
+### Tool Edit File V2
+
+### Tool Run Terminal Command V2
+
+### Tool Read File V2
+
+```
+{"path":"C:\\Users\\Victor\\Documents\\Kravta\\docs\\lighthouse\\kvarta-five.vercel.app-20261015T161203.html","offset":1,"limit":19}
+```
+
+### Tool Edit File V2
+
+### Tool Run Terminal Command V2
+
+### Tool Edit File V2
+
+### Tool Run Terminal Command V2
+
+### Tool Edit File V2
+
+### Tool Run Terminal Command V2
+
+## Assistant
+
+Отчёт один: `docs/lighthouse/kvarta-five.vercel.app-20261015T161203.html`. Время замера `2026-10-15T13:12:03.841Z` — 16:12:03 МСК, страница `https://kvarta-five.vercel.app/`. Оценки совпадают: 70 / 100 / 100 / 100, FCP 1,3 с, LCP 3,1 с, TBT 1 150 мс, CLS 0, Speed Index 2,0 с. Приложение не менялось.
+
+**Условия.** Список `runWarnings` пуст, отдельного предупреждения о сбое замера нет. Замер из DevTools, Lighthouse 13.4.1, мобильный сценарий: симуляция Slow 4G (150 мс RTT, 1 638 Кбит/с) и CPU ×4. Экранная эмуляция в конфиге выключена (`screenEmulation.disabled: true`); из‑за канала `devtools` отчёт всё равно подписывает устройство как Moto G Power. Хост — Chrome 154 на Windows, индекс CPU/памяти без троттлинга — 840,5. Сброс хранилища не отключался.
+
+**Длинные задачи.** Расширение `chrome-extension://npclhjbddhklpbnacpjloidibaggcgon` (`content.js` около 4,5 мс и `events.js` около 1,1 мс) в длинные задачи не входит. Основные задачи — сайт:
+
+| Источник | Длительность | Старт |
+|---|---:|---:|
+| `/_next/static/immutable/chunks/turbopack-1cvbnb3nlabgn.js` | 367 мс | 2 852 мс |
+| документ `kvarta-five.vercel.app/` | 335, 226, 194, 146 и 103 мс | с 1 180 мс |
+| `Unattributable` | 239, 199, 154 и 71 мс | с 870 мс |
+| `/_next/static/immutable/chunks/43jc-2nm9dy3w.js` | 50 мс | 3 219 мс |
+
+У `43jc-2nm9dy3w.js` ещё 334 мс CPU, из них 286 мс на выполнение скрипта. Главный поток в сумме 4,0 с: прочее 1,6 с, стиль и раскладка 1,2 с, выполнение скриптов 0,9 с.
+
+**LCP.** Элемент — фото первого экрана: `div#top > section.grid > figure.relative > img.object-cover`, кадр кухни через `/_next/image` для `hero-kitchen.jpg`. В документе запрос уже виден, `loading=lazy` нет. Не выполнен один пункт: у запроса нет `fetchpriority=high`. Разбивка LCP: TTFB 82 мс, задержка запроса 136 мс, загрузка 276 мс, отрисовка 307 мс. Файл 750×600 (54 КиБ) больше показанного размера 372×340; отчёт оценивает лишние 39 КиБ.
+
+Две правки, которые отчёт подтверждает: поставить `fetchpriority=high` этому изображению и отдавать вариант ближе к 372×340, а не 750×600. Они про LCP. Источник TBT 1 150 мс — документ и чанки сайта, не расширение; отдельной маленькой правки отчёт для этого не выделяет.
+
+## User
+
+Дополнение: Виктор согласовал четыре редакторские правки сайта.
+Если предыдущая задача ещё выполняется, заверши её, затем внеси
+эти правки последовательно. Один пишущий агент.
+
+Прочитай AGENTS.md. Работай в отдельной ветке от текущего HEAD;
+сохрани уже подготовленные документы и отчёты, не теряй изменения.
+
+Внеси только следующие изменения текста:
+
+1. Верхняя строка первого экрана:
+«Свежеобжаренный кофе в Минске с 2019 года».
+
+2. Предложение об основателях в истории:
+«„Кварту“ основали Аня и Дмитрий — раньше они работали бариста».
+
+3. Абзац о свежести в истории:
+«Для нас свежесть — это простой порядок: в четверг обжариваем,
+в пятницу развозим по Минску. Вы получаете кофе через 1–3 дня
+после обжарки».
+
+4. Текст перед формой:
+«Оставьте имя и телефон — мы позвоним в рабочее время и поможем
+оформить подписку или разовый заказ. Самовывоз: Минск, ул. Короля, 9».
+
+Не дублируй заменяемые предложения. Другие факты истории сохрани.
+Заголовок и подзаголовок первого экрана, дизайн и API не меняй.
+
+Документация:
+— ai-log.md: исходные предложения дала подруга-филолог Виктора,
+  ChatGPT предложил итоговые формулировки и сверил с брифом,
+  Виктор утвердил все четыре;
+— PROJECT_MEMORY.md: кратко запиши принятые изменения;
+— README: кратко отметь участие человека в редактуре;
+— BUILD_GUIDE меняй только при появлении нового шага процесса.
+Старые отчёты Lighthouse не изменяй и не представляй как замеры
+после этих правок.
+
+Выполни lint и build. Проверь переносы и отсутствие наложений
+на 360 и 1440 px. Сделай локальный коммит.
+Без push, merge и deploy.
+
+Отчёт: ветка, коммит, проверки, статус предыдущей задачи
+по подготовке сдачи. Затем остановись.
+
+## Assistant
+
+Предыдущая диагностика Lighthouse уже завершена. Сверяю ветку и тексты, затем внесу четыре согласованные правки в отдельной ветке.
+
+### Tool Read File V2
+
+```
+{"path":"C:\\Users\\Victor\\Documents\\Kravta\\AGENTS.md"}
+```
+
+### Tool Read File V2
+
+```
+{"path":"C:\\Users\\Victor\\Documents\\Kravta\\docs\\PROJECT_MEMORY.md"}
+```
+
+### Tool Ripgrep Raw Search
+
+```
+{"pattern":"Свежеобжаренный|основали|свежесть|Оставьте имя|2019|бариста|Короля","path":"C:\\Users\\Victor\\Documents\\Kravta","glob":"*.{tsx,ts,md}","caseInsensitive":false,"multiline":false,"toolCallId":"call-87ca8d34-6983-48fc-af75-a05b515d03b3-74\nfc_492b72de-87bc-95e0-8277-723e24133760_2","offset":0}
+```
+
+### Tool Run Terminal Command V2
+
+### Tool Read File V2
+
+```
+{"path":"C:\\Users\\Victor\\Documents\\Kravta\\components\\hero.tsx"}
+```
+
+### Tool Read File V2
+
+```
+{"path":"C:\\Users\\Victor\\Documents\\Kravta\\components\\story.tsx"}
+```
+
+### Tool Read File V2
+
+```
+{"path":"C:\\Users\\Victor\\Documents\\Kravta\\components\\contacts.tsx"}
+```
+
+### Tool Read File V2
+
+```
+{"path":"C:\\Users\\Victor\\Documents\\Kravta\\README.md"}
+```
+
+### Tool Read File V2
+
+```
+{"path":"C:\\Users\\Victor\\Documents\\Kravta\\ai-log.md","offset":250}
+```
+
+### Tool Ripgrep Raw Search
+
+```
+{"pattern":"Обжарка кофе|менеджер|1–3|бариста|рабоч","path":"C:\\Users\\Victor\\Documents\\Kravta\\app","caseInsensitive":false,"multiline":false,"toolCallId":"call-9ce292f7-f29d-4e46-a039-d6b98baa5025-81\nfc_cbd254a4-9b2c-98c4-a2bf-934124cd66eb_0","offset":0}
+```
+
+### Tool Ripgrep Raw Search
+
+```
+{"pattern":"Короля|бариста|2019|рабоч","path":"C:\\Users\\Victor\\Documents\\Kravta\\docs\\kvarta-brief.pdf","caseInsensitive":false,"multiline":false,"toolCallId":"call-9ce292f7-f29d-4e46-a039-d6b98baa5025-82\nfc_cbd254a4-9b2c-98c4-a2bf-934124cd66eb_1","offset":0}
+```
+
+### Tool Glob File Search
+
+```
+{"targetDirectory":"C:\\Users\\Victor\\.cursor\\projects\\c-Users-Victor-Documents-Kravta\\terminals","globPattern":"*.txt"}
+```
+
+### Tool Read File V2
+
+```
+{"path":"C:\\Users\\Victor\\.cursor\\projects\\c-Users-Victor-Documents-Kravta\\terminals\\207132.txt","limit":12}
+```
+
+### Tool Read File V2
+
+```
+{"path":"C:\\Users\\Victor\\.cursor\\projects\\c-Users-Victor-Documents-Kravta\\terminals\\207131.txt","limit":12}
+```
+
+### Tool Read File V2
+
+```
+{"path":"C:\\Users\\Victor\\.cursor\\projects\\c-Users-Victor-Documents-Kravta\\terminals\\60119.txt","limit":12}
+```
+
+## Assistant
+
+Диагностика Lighthouse уже закончена, правок по ней нет. Текущий `HEAD` — `main` на `7e3f49d`. Создаю ветку и меняю только четыре согласованных текста. Отчёт Lighthouse не трогаю.
+
+### Tool Run Terminal Command V2
+
+### Tool Edit File V2
+
+### Tool Edit File V2
+
+### Tool Edit File V2
+
+### Tool Edit File V2
+
+### Tool Ripgrep Raw Search
+
+```
+{"pattern":"Обжарка кофе в Минске|Основатели Аня|Свежесть для них|менеджер перезвонит|по городу","path":"C:\\Users\\Victor\\Documents\\Kravta","glob":"*.{tsx,ts}","caseInsensitive":false,"multiline":false,"toolCallId":"call-084c4dfd-07bf-436d-89a4-adf0289a37cd-92\nfc_aff23cca-b5cc-93c1-a1f6-66141a9a5fff_0","offset":0}
+```
+
+### Tool Edit File V2
+
+### Tool Edit File V2
+
+### Tool Edit File V2
+
+### Tool Edit File V2
+
+### Tool Run Terminal Command V2
+
+### Tool Get Mcp Tools
+
+```
+{"server":"cursor-ide-browser","toolName":"browser_navigate","toolCallId":"call-a6d8139f-a913-4648-a919-48257e31f66f-98\nfc_b1bf6538-756f-9ccd-b87d-37b46e6459b6_0"}
+```
+
+### Tool Get Mcp Tools
+
+```
+{"server":"cursor-ide-browser","toolName":"browser_lock","toolCallId":"call-a6d8139f-a913-4648-a919-48257e31f66f-99\nfc_b1bf6538-756f-9ccd-b87d-37b46e6459b6_1"}
+```
+
+### Tool Get Mcp Tools
+
+```
+{"server":"cursor-ide-browser","toolName":"browser_cdp","toolCallId":"call-a6d8139f-a913-4648-a919-48257e31f66f-100\nfc_b1bf6538-756f-9ccd-b87d-37b46e6459b6_2"}
+```
+
+### Tool Run Terminal Command V2
+
+### Tool Get Mcp Tools
+
+```
+{"server":"cursor","toolName":"AwaitShell","toolCallId":"call-7fcf31d3-5156-4e02-b2e7-3dee6210ed5b-102\nfc_02453cce-647f-9b97-af39-45142e66e699_0"}
+```
+
+### Tool Await
+
+```
+{"taskId":"97901","blockUntilMs":25000,"regex":"Ready|Error|EADDRINUSE"}
+```
+
+### Tool Mcp
+
+```
+{"name":"cursor-ide-browser-browser_navigate","args":{"url":"http://localhost:3000"},"toolCallId":"call-d3fc3ab6-12df-43f2-8fba-30c85cd62c2b-104\nfc_b8e7a61a-ffd3-9492-bb93-4520f8944fc1_0","providerIdentifier":"cursor-ide-browser","toolName":"browser_navigate","smartModeApprovalOnly":false,"skipApproval":false,"serverIdentifier":"cursor-ide-browser"}
+```
+
+### Tool Mcp
+
+```
+{"name":"cursor-ide-browser-browser_lock","args":{"action":"lock","viewId":"stable-browser-session/f6feb0017a3e5b15b9280b0dc9603317"},"toolCallId":"call-4c8ea563-6435-4a76-a86e-38952e93e577-105\nfc_0eadab1d-480b-970a-9914-f9a37794f689_0","providerIdentifier":"cursor-ide-browser","toolName":"browser_lock","smartModeApprovalOnly":false,"skipApproval":false,"serverIdentifier":"cursor-ide-browser"}
+```
+
+### Tool Mcp
+
+```
+{"name":"cursor-ide-browser-browser_cdp","args":{"method":"Emulation.setDeviceMetricsOverride","params":{"width":1440,"height":900,"deviceScaleFactor":1,"mobile":false},"viewId":"stable-browser-session/f6feb0017a3e5b15b9280b0dc9603317"},"toolCallId":"call-1073abea-5dd3-42b3-9f82-b678d8a1387a-106\nfc_c55bd73b-5229-90ce-a5e4-0d84431227a9_0","providerIdentifier":"cursor-ide-browser","toolName":"browser_cdp","smartModeApprovalOnly":false,"skipApproval":false,"serverIdentifier":"cursor-ide-browser"}
+```
+
+### Tool Mcp
+
+```
+{"name":"cursor-ide-browser-browser_cdp","args":{"method":"Runtime.evaluate","params":{"expression":"(() => {\n  const doc = document.documentElement;\n  const texts = [\n    ['eyebrow', document.querySelector('#top p, section p') ],\n  ];\n  const eyebrow = [...document.querySelectorAll('p')].find(p => p.textContent.includes('Свежеобжаренный'));\n  const h1 = document.querySelector('h1');\n  const sub = [...document.querySelectorAll('p')].find(p => p.textContent.includes('Обжариваем партиями'));\n  const founders = [...document.querySelectorAll('p')].find(p => p.textContent.includes('основали'));\n  const fresh = [...document.querySelectorAll('p')].find(p => p.textContent.includes('свежесть'));\n  const formLead = [...document.querySelectorAll('p')].find(p => p.textContent.includes('мы позвоним'));\n  function info(el) {\n    if (!el) return null;\n    const r = el.getBoundingClientRect();\n    const cs = getComputedStyle(el);\n    const range = document.createRange();\n    range.selectNodeContents(el);\n    const lines = range.getClientRects().length;\n    return {\n      text: el.textContent.trim(),\n      w: Math.round(r.width), h: Math.round(r.height), top: Math.round(r.top), left: Math.round(r.left),\n      lines,\n      overflow: el.scrollWidth > el.clientWidth + 1,\n      whiteSpace: cs.whiteSpace,\n      scrollW: el.scrollWidth, clientW: el.clientWidth\n    };\n  }\n  function overlaps(a, b) {\n    if (!a || !b) return null;\n    const A = a.getBoundingClientRect(); const B = b.getBoundingClientRect();\n    const x = Math.min(A.right, B.right) - Math.max(A.left, B.left);\n    const y = Math.min(A.bottom, B.bottom) - Math.max(A.top, B.top);\n    return { overlapX: Math.round(x), overlapY: Math.round(y), hit: x > 1 && y > 1 };\n  }\n  const figure = document.querySelector('figure');\n  const heroText = eyebrow?.parentElement;\n  return {\n    viewport: { inner: window.innerWidth, client: doc.clientWidth, scroll: doc.scrollWidth, overflow: doc.scrollWidth > doc.clientWidth + 1 },\n    eyebrow: info(eyebrow), h1: info(h1), sub: info(sub),\n    founders: info(founders), fresh: info(fresh), formLead: info(formLead),\n    pairs: {\n      eyebrowH1: overlaps(eyebrow, h1),\n      h1Sub: overlaps(h1, sub),\n      foundersFresh: overlaps(founders, fresh),\n      heroTextFigure: overlaps(heroText, figure),\n    }\n  };\n})()","returnByValue":true},"viewId":"stable-browser-session/f6feb0017a3e5b15b9280b0dc9603317"},"toolCallId":"call-69a55141-110e-4f42-903c-38f9d0cff35e-107\nfc_1ce2035e-c848-91a5-beff-3a4bf25c5313_0","providerIdentifier":"cursor-ide-browser","toolName":"browser_cdp","smartModeApprovalOnly":false,"skipApproval":false,"serverIdentifier":"cursor-ide-browser"}
+```
+
+### Tool Mcp
+
+```
+{"name":"cursor-ide-browser-browser_cdp","args":{"method":"Emulation.setDeviceMetricsOverride","params":{"deviceScaleFactor":1,"height":800,"mobile":true,"width":360},"viewId":"stable-browser-session/f6feb0017a3e5b15b9280b0dc9603317"},"toolCallId":"call-1b5c4c2e-b992-44a7-8db8-04dba7d3008d-108\nfc_91b05cc3-55ba-944e-af1b-3532456b548f_0","providerIdentifier":"cursor-ide-browser","toolName":"browser_cdp","smartModeApprovalOnly":false,"skipApproval":false,"serverIdentifier":"cursor-ide-browser"}
+```
+
+### Tool Mcp
+
+```
+{"name":"cursor-ide-browser-browser_cdp","args":{"method":"Runtime.evaluate","params":{"expression":"(() => {\n  const doc = document.documentElement;\n  const eyebrow = [...document.querySelectorAll('p')].find(p => p.textContent.includes('Свежеобжаренный'));\n  const h1 = document.querySelector('h1');\n  const sub = [...document.querySelectorAll('p')].find(p => p.textContent.includes('Обжариваем партиями'));\n  const founders = [...document.querySelectorAll('p')].find(p => p.textContent.includes('основали'));\n  const fresh = [...document.querySelectorAll('p')].find(p => p.textContent.includes('свежесть'));\n  const formLead = [...document.querySelectorAll('p')].find(p => p.textContent.includes('мы позвоним'));\n  const form = document.querySelector('form');\n  const figure = document.querySelector('figure');\n  function info(el) {\n    if (!el) return null;\n    const r = el.getBoundingClientRect();\n    const range = document.createRange();\n    range.selectNodeContents(el);\n    return {\n      w: Math.round(r.width), h: Math.round(r.height), top: Math.round(r.top + window.scrollY), left: Math.round(r.left),\n      lines: range.getClientRects().length,\n      overflow: el.scrollWidth > el.clientWidth + 1\n    };\n  }\n  function overlaps(a, b) {\n    if (!a || !b) return null;\n    const A = a.getBoundingClientRect(); const B = b.getBoundingClientRect();\n    const x = Math.min(A.right, B.right) - Math.max(A.left, B.left);\n    const y = Math.min(A.bottom, B.bottom) - Math.max(A.top, B.top);\n    return { gapY: Math.round(B.top - A.bottom), hit: x > 1 && y > 1 };\n  }\n  return {\n    viewport: { inner: window.innerWidth, client: doc.clientWidth, scroll: doc.scrollWidth, overflow: doc.scrollWidth > doc.clientWidth + 1 },\n    eyebrow: info(eyebrow), h1: info(h1), sub: info(sub),\n    founders: info(founders), fresh: info(fresh), formLead: info(formLead),\n    figure: info(figure),\n    pairs: {\n      eyebrowH1: overlaps(eyebrow, h1),\n      h1Sub: overlaps(h1, sub),\n      subFigure: overlaps(sub.parentElement, figure),\n      foundersFresh: overlaps(founders, fresh),\n      formLeadForm: overlaps(formLead, form),\n    }\n  };\n})()","returnByValue":true},"viewId":"stable-browser-session/f6feb0017a3e5b15b9280b0dc9603317"},"toolCallId":"call-9b6bc037-7fb2-4b16-a2c8-85ebe96ae747-109\nfc_547fe0a9-2f88-9167-8e78-ebbceb33969a_0","providerIdentifier":"cursor-ide-browser","toolName":"browser_cdp","smartModeApprovalOnly":false,"skipApproval":false,"serverIdentifier":"cursor-ide-browser"}
+```
+
+### Tool Mcp
+
+```
+{"name":"cursor-ide-browser-browser_cdp","args":{"method":"Runtime.evaluate","params":{"expression":"(() => {\n  function linesOf(el) {\n    const walker = document.createTreeWalker(el, NodeFilter.SHOW_TEXT);\n    const node = walker.nextNode();\n    const text = node.textContent;\n    const range = document.createRange();\n    const lines = [];\n    let start = 0;\n    let lastTop = null;\n    for (let i = 0; i <= text.length; i++) {\n      range.setStart(node, Math.min(i, text.length));\n      range.setEnd(node, Math.min(i + 1, text.length) || text.length);\n      const rect = range.getClientRects()[0];\n      if (!rect) continue;\n      if (lastTop !== null && Math.abs(rect.top - lastTop) > 2) {\n        lines.push(text.slice(start, i));\n        start = i;\n      }\n      lastTop = rect.top;\n    }\n    lines.push(text.slice(start));\n    return lines.map(s => s.trim()).filter(Boolean);\n  }\n  const pick = (needle) => [...document.querySelectorAll('p')].find(p => p.textContent.includes(needle));\n  return {\n    eyebrow: linesOf(pick('Свежеобжаренный')),\n    founders: linesOf(pick('основали')),\n    fresh: linesOf(pick('свежесть')),\n    form: linesOf(pick('мы позвоним')),\n  };\n})()","returnByValue":true},"viewId":"stable-browser-session/f6feb0017a3e5b15b9280b0dc9603317"},"toolCallId":"call-15f6a5de-16b6-429d-859b-3217f9eaeca6-110\nfc_9b7f59a3-0a3d-9754-aabc-eb62c8b6657d_0","providerIdentifier":"cursor-ide-browser","toolName":"browser_cdp","smartModeApprovalOnly":false,"skipApproval":false,"serverIdentifier":"cursor-ide-browser"}
+```
+
+### Tool Mcp
+
+```
+{"name":"cursor-ide-browser-browser_cdp","args":{"method":"Emulation.setDeviceMetricsOverride","params":{"deviceScaleFactor":1,"height":900,"mobile":false,"width":1440},"viewId":"stable-browser-session/f6feb0017a3e5b15b9280b0dc9603317"},"toolCallId":"call-720fc49b-37af-4e24-a202-158a4f51d3fb-111\nfc_804456e6-59a3-9a11-b84c-981df217169a_0","providerIdentifier":"cursor-ide-browser","toolName":"browser_cdp","smartModeApprovalOnly":false,"skipApproval":false,"serverIdentifier":"cursor-ide-browser"}
+```
+
+### Tool Mcp
+
+```
+{"name":"cursor-ide-browser-browser_cdp","args":{"method":"Runtime.evaluate","params":{"expression":"(() => {\n  function linesOf(el) {\n    const node = document.createTreeWalker(el, NodeFilter.SHOW_TEXT).nextNode();\n    const text = node.textContent;\n    const range = document.createRange();\n    const lines = [];\n    let start = 0;\n    let lastTop = null;\n    for (let i = 0; i <= text.length; i++) {\n      range.setStart(node, Math.min(i, text.length));\n      range.setEnd(node, Math.min(Math.max(i + 1, 1), text.length));\n      const rect = range.getClientRects()[0];\n      if (!rect) continue;\n      if (lastTop !== null && Math.abs(rect.top - lastTop) > 2) {\n        lines.push(text.slice(start, i).trim());\n        start = i;\n      }\n      lastTop = rect.top;\n    }\n    lines.push(text.slice(start).trim());\n    return lines.filter(Boolean);\n  }\n  const pick = (needle) => [...document.querySelectorAll('p')].find(p => p.textContent.includes(needle));\n  return {\n    width: window.innerWidth,\n    eyebrow: linesOf(pick('Свежеобжаренный')),\n    founders: linesOf(pick('основали')),\n    fresh: linesOf(pick('свежесть')),\n    form: linesOf(pick('мы позвоним')),\n    h1: document.querySelector('h1').textContent.trim(),\n    sub: pick('Обжариваем партиями').textContent.trim()\n  };\n})()","returnByValue":true},"viewId":"stable-browser-session/f6feb0017a3e5b15b9280b0dc9603317"},"toolCallId":"call-5edd1f67-00d6-4ff4-ae99-82e6f4633a08-112\nfc_354f4ad6-e141-91e8-8726-e21452efa7b8_0","providerIdentifier":"cursor-ide-browser","toolName":"browser_cdp","smartModeApprovalOnly":false,"skipApproval":false,"serverIdentifier":"cursor-ide-browser"}
+```
+
+### Tool Mcp
+
+```
+{"name":"cursor-ide-browser-browser_lock","args":{"action":"unlock","viewId":"stable-browser-session/f6feb0017a3e5b15b9280b0dc9603317"},"toolCallId":"call-f9316098-51cb-4828-a120-8738ef649d5e-113\nfc_53f49943-5c3f-981f-a8c3-871747785fea_0","providerIdentifier":"cursor-ide-browser","toolName":"browser_lock","smartModeApprovalOnly":false,"skipApproval":false,"serverIdentifier":"cursor-ide-browser"}
+```
+
+### Tool Edit File V2
+
+### Tool Run Terminal Command V2
+
+### Tool Run Terminal Command V2
+
+### Tool Run Terminal Command V2
+
+### Tool Run Terminal Command V2
+
+## Assistant
+
+Четыре согласованных текста заменены в отдельной ветке. Push, merge и deploy не выполнялись.
+
+**Ветка:** `edit/approved-copy` от `main` (`7e3f49d`).  
+**Коммит:** `6153985420c420c5134545d037f66bce9788e2c0` — «Заменить четыре согласованные формулировки на странице.»
+
+Заголовок и подзаголовок первого экрана на месте. В истории остались факты о небольшой обжарке в Минске и партиях по 5 кг с 2019 года. `docs/BUILD_GUIDE.md` не менялся. Отчёт `docs/lighthouse/kvarta-five.vercel.app-20261015T161203.html` не редактировался и в коммит не входил; он по-прежнему не отслеживается Git.
+
+**Проверки.** `npm run lint` — код 0. `npm run build` — код 0, `/` статический, `/api/lead` динамический. На http://localhost:3000 горизонтальной прокрутки нет. На 1440 px верхняя строка в одну строку; абзацы истории и текст перед формой переносятся по словам, наложений нет. На 360 px верхняя строка переносится после «с» («2019 года» на второй строке), остальные новые абзацы — по четыре строки, зазоры 16–32 px, наложений нет.
+
+**Подготовка к сдаче до этой правки.** Репозиторий GitHub создан, `main` и `feat/lead-api` отправлены, PR №1 слит в `7e3f49d`, локальная `main` обновлена. Сайт уже был на https://kvarta-five.vercel.app/. Разбор Lighthouse завершён до этих текстов; код по нему не менялся.
+
+## User
+
+Четыре правки приняты. Пока без push, merge и deploy.
+
+Заверши ранее поставленную задачу подготовки сдачи в текущей
+ветке edit/approved-copy, сохранив коммит 6153985:
+
+1. Найди оба сохранённых Lighthouse-отчёта — 70 и 73.
+   Добавь их в Git. Если второго файла нет — сообщи, не создавай его.
+   Укажи конфигурацию и фактический viewport второго замера.
+
+2. Только чтением Neon проверь UTM и landing_url заявки
+   от 15 октября 16:04:01 МСК. Покажи фактические значения,
+   телефон замаскируй. Ничего в БД не меняй.
+
+3. Дополни документацию ранее согласованными сведениями
+   о публикации, проверках, нейтральной упаковке и VPS AEZA.
+   Проверь, записаны ли источник и утверждение четырёх текстовых правок.
+
+4. Сообщи, есть ли настоящий экспорт чатов или скриншоты работы
+   с ИИ для сдачи. Одного ai-log не считай их заменой.
+
+Сделай локальный коммит материалов. Общие проверки приложения
+повторять не нужно, если код не менялся.
+Отчёт: результаты, коммит, git status и оставшиеся пробелы.
+
+## Assistant
+
+Коммит `6153985` оставляю. Ищу оба отчёта Lighthouse и ранее согласованные сведения для документации сдачи.
+
+### Tool Read File V2
+
+```
+{"path":"C:\\Users\\Victor\\Documents\\Kravta\\docs\\PROJECT_MEMORY.md","limit":40}
+```
+
+### Tool Glob File Search
+
+```
+{"targetDirectory":"C:\\Users\\Victor\\Documents\\Kravta","globPattern":"**/*lighthouse*"}
+```
+
+### Tool Glob File Search
+
+```
+{"targetDirectory":"C:\\Users\\Victor\\Documents\\Kravta\\docs","globPattern":"**/*.{html,json,png,webp}"}
+```
+
+### Tool Ripgrep Raw Search
+
+```
+{"pattern":"AEZA|упаковк|VPS|нейтральн","path":"C:\\Users\\Victor\\Documents\\Kravta","glob":"*.{md,txt,pdf}","caseInsensitive":false,"multiline":false,"toolCallId":"call-374a2d60-5b6f-45a0-a3d8-0d8d3799e708-122\nfc_3653eac9-0037-9f1a-b49f-738eb0548d2d_3","offset":0}
+```
+
+## Assistant
+
+В папке два HTML-отчёта. Сверяю оценки и ищу в прошлых материалах согласованные сведения об упаковке и VPS.
+
+### Tool Ripgrep Raw Search
+
+```
+{"pattern":"AEZA|упаковк|VPS|нейтральн","path":"C:\\Users\\Victor\\.cursor\\projects\\c-Users-Victor-Documents-Kravta\\agent-transcripts","caseInsensitive":false,"headLimit":40,"multiline":false,"toolCallId":"call-05b8b4dd-a84d-41fd-acc6-dc22e88af48b-123\nfc_8c7ef280-c769-9e1b-ab77-a325fdf18fda_0","offset":0}
+```
+
+### Tool Glob File Search
+
+```
+{"targetDirectory":"C:\\Users\\Victor\\Documents\\Kravta","globPattern":"**/*.{png,jpg,html,json,txt,md}"}
+```
+
+### Tool Ripgrep Raw Search
+
+```
+{"pattern":"\"performance\"|\"formFactor\"|fetchTime|screenEmulation","path":"C:\\Users\\Victor\\Documents\\Kravta\\docs\\lighthouse","glob":"*.html","caseInsensitive":false,"headLimit":5,"multiline":false,"toolCallId":"call-05b8b4dd-a84d-41fd-acc6-dc22e88af48b-125\nfc_8c7ef280-c769-9e1b-ab77-a325fdf18fda_2","offset":0}
+```
+
+### Tool Ripgrep Raw Search
+
+```
+{"pattern":"AEZA|нейтральн|упаковк|подготовк.*сдач|VPS","path":"C:\\Users\\Victor\\.cursor\\projects\\c-Users-Victor-Documents-Kravta\\agent-transcripts","glob":"*.jsonl","caseInsensitive":false,"headLimit":30,"multiline":false,"toolCallId":"call-6560d3a2-683b-4f53-9cfe-fe0bfc9972aa-126\nfc_1bdeca92-45dd-984a-aeab-affa0e72b5ac_0","offset":0}
+```
+
+### Tool Glob File Search
+
+```
+{"targetDirectory":"C:\\Users\\Victor\\Documents\\Kravta\\docs","globPattern":"**/*"}
+```
+
+### Tool Get Mcp Tools
+
+```
+{"server":"cursor","toolName":"SearchConversations","toolCallId":"call-6560d3a2-683b-4f53-9cfe-fe0bfc9972aa-128\nfc_1bdeca92-45dd-984a-aeab-affa0e72b5ac_2"}
+```
+
+### Tool Unspecified
+
+```
+{"query":"AEZA","toolCallId":"call-0b9f9b46-dda2-409a-a33c-79c1e7cbf13b-129\nfc_9341ab68-cde2-9dc7-8339-479767d41c75_0","limit":10}
+```
+
+### Tool Unspecified
+
+```
+{"query":"\"нейтральная упаковка\"","toolCallId":"call-0b9f9b46-dda2-409a-a33c-79c1e7cbf13b-130\nfc_9341ab68-cde2-9dc7-8339-479767d41c75_1","limit":10}
+```
+
+### Tool Run Terminal Command V2
+
+### Tool Unspecified
+
+```
+{"query":"упаковк","toolCallId":"call-83722af0-f73b-40dd-b0fb-f7cfb0b004bb-132\nfc_093fed3b-be5b-9b4c-83b3-919ed020a577_0","limit":10}
+```
+
+### Tool Unspecified
+
+```
+{"query":"Кварта сдач","toolCallId":"call-83722af0-f73b-40dd-b0fb-f7cfb0b004bb-133\nfc_093fed3b-be5b-9b4c-83b3-919ed020a577_1","limit":10}
+```
+
+### Tool Run Terminal Command V2
+
+### Tool Unspecified
+
+```
+{"query":"\"AEZA\"","toolCallId":"call-aa7a367c-4f81-44d7-b691-09303d918eeb-135\nfc_63b42745-2a7b-94ae-af2e-1920260dc8b3_0","limit":5}
+```
+
+### Tool Ripgrep Raw Search
+
+```
+{"pattern":"AEZA|упаковк|VPS|публик","path":"C:\\Users\\Victor\\.cursor\\projects\\c-Users-Victor-Documents-Kravta\\agent-transcripts\\0b559e26-1326-46a1-bfae-77eeb79de0f1","caseInsensitive":false,"headLimit":20,"multiline":false,"toolCallId":"call-aa7a367c-4f81-44d7-b691-09303d918eeb-136\nfc_63b42745-2a7b-94ae-af2e-1920260dc8b3_1","offset":0}
+```
+
+### Tool Run Terminal Command V2
+
+### Tool Run Terminal Command V2
+
+### Tool Edit File V2
+
+### Tool Run Terminal Command V2
+
+### Tool Read File V2
+
+```
+{"path":"C:\\Users\\Victor\\AppData\\Local\\Temp\\kvarta-brief.txt"}
+```
+
+### Tool Edit File V2
+
+### Tool Run Terminal Command V2
+
+### Tool Read File V2
+
+```
+{"path":"C:\\Users\\Victor\\AppData\\Local\\Temp\\brief-snip.txt","limit":200}
+```
+
+### Tool Ripgrep Raw Search
+
+```
+{"pattern":"упаков|AEZA|нейтральн|VPS","path":"C:\\Users\\Victor\\.cursor\\projects\\c-Users-Victor-Documents-Kravta\\agent-transcripts","glob":"*.jsonl","caseInsensitive":false,"multiline":false,"toolCallId":"call-b4fa0427-6061-4a93-8366-0916a124eb29-145\nfc_cd682018-3dc6-9839-ab38-0fb9b41e886b_0","offset":0}
+```
+
+### Tool Glob File Search
+
+```
+{"targetDirectory":"C:\\Users\\Victor\\.cursor\\projects\\c-Users-Victor-Documents-Kravta\\agent-transcripts","globPattern":"**/*.jsonl"}
+```
+
+### Tool Edit File V2
+
+### Tool Run Terminal Command V2
+
+### Tool Ripgrep Raw Search
+
+```
+{"pattern":"AEZA|упаков|VPS|Lighthouse|73|публикац|скриншот|экспорт","path":"C:\\Users\\Victor\\AppData\\Local\\Temp\\user-queries.txt","caseInsensitive":false,"multiline":false,"toolCallId":"call-8aeed47c-e530-4688-9efc-89a555be6b0f-149\nfc_cc012442-be6f-9b51-87b7-09cb224fbf71_0","offset":0}
+```
+
+### Tool Edit File V2
+
+### Tool Run Terminal Command V2
+
+### Tool Edit File V2
+
+### Tool Ripgrep Raw Search
+
+```
+{"pattern":"подруга-филолог|утвердил все четыре","path":"C:\\Users\\Victor\\Documents\\Kravta","glob":"*.md","caseInsensitive":false,"multiline":false,"toolCallId":"call-527043ce-e687-4404-8bdc-2c47661d4b29-153\nfc_3b4081a3-9e45-9ece-9023-a784b9940056_1","offset":0}
+```
+
+### Tool Glob File Search
+
+```
+{"targetDirectory":"C:\\Users\\Victor\\Documents\\Kravta","globPattern":"**/*{chat,export,chatgpt,cursor}*"}
+```
+
+### Tool Run Terminal Command V2
+
+### Tool Mcp
+
+```
+{"name":"cursor-ide-browser-browser_navigate","args":{"url":"file:///C:/Users/Victor/Documents/Kravta/docs/kvarta-brief.pdf"},"toolCallId":"call-f3f59461-87db-4e86-b30e-564241c72d7d-156\nfc_b4a2587b-a4d4-9d47-a30e-c98a4d7af220_1","providerIdentifier":"cursor-ide-browser","toolName":"browser_navigate","smartModeApprovalOnly":false,"skipApproval":false,"serverIdentifier":"cursor-ide-browser"}
+```
+
+### Tool Edit File V2
+
+### Tool Run Terminal Command V2
+
+### Tool Run Terminal Command V2
+
+### Tool Edit File V2
+
+### Tool Run Terminal Command V2
+
+### Tool Ripgrep Raw Search
+
+```
+{"pattern":"упаков|пакет|нейтрал","path":"C:\\Users\\Victor\\Documents\\Kravta\\components","caseInsensitive":false,"multiline":false,"toolCallId":"call-1822b393-47bd-4b10-9880-d621f89f7add-162\nfc_ab86e12c-804f-9b1a-8fb3-addb460924f3_1","offset":0}
+```
+
+### Tool Run Terminal Command V2
+
+### Tool Run Terminal Command V2
+
+### Tool Run Terminal Command V2
+
+### Tool Run Terminal Command V2
+
+### Tool Run Terminal Command V2
+
+### Tool Read File V2
+
+```
+{"path":"C:\\Users\\Victor\\AppData\\Local\\Temp\\dl-names.txt"}
+```
+
+### Tool Ripgrep Raw Search
+
+```
+{"pattern":"упаков|AEZA|Кварта|VPS|Lighthouse","path":"C:\\Users\\Victor\\Downloads\\PROJECT_INSTRUCTIONS.txt","caseInsensitive":false,"multiline":false,"toolCallId":"call-33879832-8e3b-4c6c-bfa6-5b24ab1ae35f-169\nfc_937a5b1a-5efc-9543-bfec-021171cedf2d_0","offset":0}
+```
+
+### Tool Ripgrep Raw Search
+
+```
+{"pattern":"упаков|AEZA|Кварта|VPS|Lighthouse","path":"C:\\Users\\Victor\\Downloads\\PROJECT_INSTRUCTIONS_v0.3.txt","caseInsensitive":false,"multiline":false,"toolCallId":"call-33879832-8e3b-4c6c-bfa6-5b24ab1ae35f-170\nfc_937a5b1a-5efc-9543-bfec-021171cedf2d_1","offset":0}
+```
+
+### Tool Ripgrep Raw Search
+
+```
+{"pattern":"упаков|AEZA|Кварта|VPS","path":"C:\\Users\\Victor\\Downloads\\CURRENT.md","caseInsensitive":false,"multiline":false,"toolCallId":"call-33879832-8e3b-4c6c-bfa6-5b24ab1ae35f-171\nfc_937a5b1a-5efc-9543-bfec-021171cedf2d_2","offset":0}
+```
+
+### Tool Ripgrep Raw Search
+
+```
+{"pattern":"упаков|AEZA|Кварта|нейтральн","path":"C:\\Users\\Victor\\Downloads\\Создание проекта сайтов.html","caseInsensitive":false,"headLimit":20,"multiline":false,"toolCallId":"call-f5eef10d-a57f-4815-8f1a-fd46d1c13e42-172\nfc_6b959b16-1edd-99a5-b09b-ce52ba3d4aa1_0","offset":0}
+```
+
+### Tool Ripgrep Raw Search
+
+```
+{"pattern":"упаков|AEZA|Кварта","path":"C:\\Users\\Victor\\Downloads\\sites-turnkey-approved-v0.2","caseInsensitive":false,"headLimit":30,"multiline":false,"toolCallId":"call-f5eef10d-a57f-4815-8f1a-fd46d1c13e42-173\nfc_6b959b16-1edd-99a5-b09b-ce52ba3d4aa1_1","offset":0}
+```
+
+### Tool Ripgrep Raw Search
+
+```
+{"pattern":"упаков|AEZA|Кварта","path":"C:\\Users\\Victor\\Downloads\\me.htm","caseInsensitive":false,"headLimit":20,"multiline":false,"toolCallId":"call-f5eef10d-a57f-4815-8f1a-fd46d1c13e42-174\nfc_6b959b16-1edd-99a5-b09b-ce52ba3d4aa1_2","offset":0}
+```
+
+### Tool Ripgrep Raw Search
+
+```
+{"pattern":"Короля|нейтральн|упаковк|AEZA","path":"C:\\Users\\Victor\\.cursor\\projects\\c-Users-Victor-Documents-Kravta\\agent-transcripts\\0b559e26-1326-46a1-bfae-77eeb79de0f1","caseInsensitive":false,"headLimit":15,"multiline":false,"toolCallId":"call-4004c4ab-0849-4051-ac6b-e4a51569a809-175\nfc_35712b88-5527-94db-91db-37c2d7001d36_0","offset":0}
+```
+
+### Tool Ripgrep Raw Search
+
+```
+{"pattern":"нейтральн|AEZA|упаковк","path":"C:\\Users\\Victor\\Downloads\\sites-turnkey-sources-v0.3","caseInsensitive":false,"headLimit":30,"multiline":false,"toolCallId":"call-f5f61aca-9d2d-489c-b9f6-05a98667860e-176\nfc_da0cfc36-e23c-904f-a902-6c07982d8429_0","offset":0}
+```
+
+### Tool Ripgrep Raw Search
+
+```
+{"pattern":"нейтральн|AEZA|упаковк","path":"C:\\Users\\Victor\\Downloads\\sites-turnkey-foundation","caseInsensitive":false,"headLimit":30,"multiline":false,"toolCallId":"call-f5f61aca-9d2d-489c-b9f6-05a98667860e-177\nfc_da0cfc36-e23c-904f-a902-6c07982d8429_1","offset":0}
+```
+
+### Tool Read File V2
+
+```
+{"path":"C:\\Users\\Victor\\Documents\\Kravta\\docs\\kvarta-brief.pdf","limit":50}
+```
+
+### Tool Read File V2
+
+```
+{"path":"C:\\Users\\Victor\\Documents\\Kravta\\docs\\kvarta-brief.pdf","offset":50}
+```
+
+### Tool Ripgrep Raw Search
+
+```
+{"pattern":"нейтральн.{0,40}упаков|упаковк.{0,40}нейтраль","path":"C:\\Users\\Victor\\.cursor\\projects","glob":"*.jsonl","caseInsensitive":false,"headLimit":20,"multiline":false,"toolCallId":"call-b4675a31-7a59-4c91-8878-097bb7249273-180\nfc_4556ecfe-0d97-934b-8b9c-d7b171d6df58_0","offset":0}
+```
+
+### Tool Ripgrep Raw Search
+
+```
+{"pattern":"VPS AEZA|AEZA","path":"C:\\Users\\Victor\\.cursor\\projects","glob":"*.jsonl","caseInsensitive":false,"headLimit":20,"multiline":false,"toolCallId":"call-b4675a31-7a59-4c91-8878-097bb7249273-181\nfc_4556ecfe-0d97-934b-8b9c-d7b171d6df58_1","offset":0}
+```
+
+### Tool Read File V2
+
+```
+{"path":"C:\\Users\\Victor\\Downloads\\Кварта_ сравнение двух мобильных лендингов.png"}
+```
+
+### Tool Read File V2
+
+```
+{"path":"C:\\Users\\Victor\\Documents\\Kravta\\README.md","offset":40,"limit":20}
+```
+
+### Tool Read File V2
+
+```
+{"path":"C:\\Users\\Victor\\Documents\\Kravta\\docs\\PROJECT_MEMORY.md","offset":110}
+```
+
+## Assistant
+
+Оба отчёта на месте: 70 и 73. В брифе нет ни нейтральной упаковки, ни VPS AEZA — эти факты не буду дописывать. Фиксирую публикацию, проверки и чтение заявки.
+
+### Tool Edit File V2
+
+### Tool Edit File V2
+
+### Tool Edit File V2
+
+### Tool Ripgrep Raw Search
+
+```
+{"pattern":"Публикация и проверки|Push, merge","path":"C:\\Users\\Victor\\Documents\\Kravta\\README.md","caseInsensitive":false,"multiline":false,"toolCallId":"call-86356878-bca8-4de9-9200-dcc0a768958d-188\nfc_a32e6e21-6ee6-9166-a443-44f1e9fabbeb_0","offset":0}
+```
+
+### Tool Read File V2
+
+```
+{"path":"C:\\Users\\Victor\\Documents\\Kravta\\README.md","offset":40,"limit":45}
+```
+
+### Tool Run Terminal Command V2
+
+### Tool Ripgrep Raw Search
+
+```
+{"pattern":"postgres(ql)?://[^/\\s]+:[^@\\s]+@|DATABASE_URL=.+","path":"C:\\Users\\Victor\\Documents\\Kravta\\docs\\lighthouse","caseInsensitive":false,"multiline":false,"toolCallId":"call-c75594ba-b4f1-408d-ab79-40609b214790-191\nfc_493b2dbc-63c5-95e4-8f7c-7cedc6db3d4e_0","offset":0}
+```
+
+### Tool Run Terminal Command V2
+
+### Tool Run Terminal Command V2
+
+## Assistant
+
+Материалы сдачи зафиксированы поверх `6153985`. Код приложения не менялся, повторных lint и build не было. Push, merge и deploy не выполнялись.
+
+**Lighthouse.** Оба файла уже были в `docs/lighthouse/`, новый не создавался.
+
+| Файл | Время МСК | Оценки |
+|---|---|---|
+| `kvarta-five.vercel.app-20261015T161203.html` | 16:12:03 | 70/100/100/100 |
+| `kvarta-five.vercel.app-20261015T165047.html` | 16:50:47 | 73/100/100/100 |
+
+Второй замер: Lighthouse 13.4.1, DevTools, mobile, симуляция Slow 4G (150 мс RTT, 1 638 Кбит/с) и CPU ×4. В конфиге экран 412×823, DPR 1,75, но `screenEmulation.disabled` равен true. Фактический полный кадр в отчёте — **412×4092 px**. Оба замера раньше текстовых правок.
+
+**Заявка, только чтение.** Одна строка, 15.10.2026 16:04:01.661 МСК, телефон `+37544*****28`. `utm_source` — `qa-check`, `utm_medium` — `manual`, `utm_campaign` — `release`, `utm_term` и `utm_content` пустые. `landing_url`: `https://kvarta-five.vercel.app/?utm_source=qa-check&utm_medium=manual&utm_campaign=release`.
+
+**Четыре текста.** Источник и утверждение уже записаны в `ai-log.md`, `docs/PROJECT_MEMORY.md` и `README.md`: исходные предложения дала подруга-филолог Виктора, итоговые формулировки предложил ChatGPT и сверил с брифом, Виктор утвердил все четыре.
+
+**Экспорт чатов.** В репозитории нет экспорта сессии и нет скриншотов работы с ИИ. `ai-log.md` и снимки страницы в `docs/screenshots/` этой заменой не являются.
+
+**Коммит:** `762b4f934f71acfcdefba579463240ab7901fed8` на `edit/approved-copy`. Родитель — `6153985`.
+
+**git status:** ветка `edit/approved-copy`, рабочее дерево чистое.
+
+**Пробелы.** Согласованного текста про нейтральную упаковку и VPS AEZA в брифе и записях проекта нет, поэтому эти пункты не дописаны. Ветка не отправлена, на опубликованном сайте четырёх текстовых правок ещё нет. Для сдачи по брифу по-прежнему нет настоящего экспорта сессии или скриншотов работы с ИИ.
+
+## User
+
+Уточнение от Виктора: следующие сведения согласованы в переписке
+с наставником. Их отсутствие в брифе не препятствует записи
+в документацию; не представляй их как требования заказчика.
+
+1. README, кратко:
+«На иллюстрации — нейтральная крафтовая упаковка без маркировки.
+Готовый логотип в брифе не предоставлен; после его согласования
+изображение можно обновить».
+
+2. BUILD_GUIDE и память:
+«У Виктора есть арендованный VPS AEZA со свободными ресурсами.
+Для этого тестового задания выбран бесплатный Vercel согласно
+условиям брифа. AEZA рассматривается для будущих проектов».
+
+Запиши уточнение в ai-log. Только документация, локальный коммит.
+Без push, merge и deploy.
+
+## Assistant
+
+Уточнение наставника запишу как договорённость, не как пункт брифа. Сначала сверю текущие места в README, руководстве и памяти.
+
+### Tool Read File V2
+
+```
+{"path":"C:\\Users\\Victor\\Documents\\Kravta\\AGENTS.md"}
+```
+
+### Tool Read File V2
+
+```
+{"path":"C:\\Users\\Victor\\Documents\\Kravta\\README.md","offset":45,"limit":30}
+```
+
+### Tool Read File V2
+
+```
+{"path":"C:\\Users\\Victor\\Documents\\Kravta\\docs\\BUILD_GUIDE.md","offset":190,"limit":40}
+```
+
+### Tool Read File V2
+
+```
+{"path":"C:\\Users\\Victor\\Documents\\Kravta\\docs\\PROJECT_MEMORY.md","offset":120,"limit":40}
+```
+
+### Tool Read File V2
+
+```
+{"path":"C:\\Users\\Victor\\Documents\\Kravta\\ai-log.md","offset":280,"limit":50}
+```
+
+## Assistant
+
+В брифе этих пунктов нет. Запишу их как договорённость с наставником и уберу прежнюю фразу, что сведения не внесены.
+
+### Tool Edit File V2
+
+### Tool Edit File V2
+
+### Tool Edit File V2
+
+### Tool Edit File V2
+
+### Tool Read File V2
+
+```
+{"path":"C:\\Users\\Victor\\Documents\\Kravta\\README.md","offset":60,"limit":20}
+```
+
+### Tool Run Terminal Command V2
+
+### Tool Run Terminal Command V2
+
+### Tool Run Terminal Command V2
+
+### Tool Run Terminal Command V2
+
+## Assistant
+
+Договорённости с наставником записаны как его уточнение, не как требования заказчика из брифа. Код не менялся. Push, merge и deploy не выполнялись.
+
+**README.** На иллюстрации — нейтральная крафтовая упаковка без маркировки. Готового логотипа в брифе нет; после согласования изображение можно обновить.
+
+**BUILD_GUIDE и память.** У Виктора есть арендованный VPS AEZA со свободными ресурсами. Для этого задания выбран бесплатный Vercel по условиям брифа. AEZA остаётся для будущих проектов.
+
+Уточнение добавлено в `ai-log.md`.
+
+**Коммит:** `3e3a6a4f70ac7fe0cbcb01c350491a9754ee8818` на `edit/approved-copy`. Рабочее дерево чистое.
