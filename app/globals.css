@@ -1,0 +1,41 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: var(--font-source-sans), "Segoe UI", sans-serif;
+  --font-serif: var(--font-source-serif), "Times New Roman", serif;
+  --color-cream: #f3eee4;
+  --color-cream-soft: #faf7f1;
+  --color-ink: #1e1612;
+  --color-ink-muted: #5c4e44;
+  --color-forest: #2c5545;
+  --color-forest-hover: #23483a;
+  --color-forest-fg: #f6f1e8;
+  --color-line: #d6cdbf;
+}
+
+html {
+  scroll-padding-top: 5.5rem;
+}
+
+body {
+  background-color: var(--color-cream);
+  color: var(--color-ink);
+  font-size: 1rem;
+  line-height: 1.6;
+  overflow-x: clip;
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-forest);
+  outline-offset: 3px;
+}
+
+section[id] {
+  scroll-margin-top: 5.5rem;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    scroll-behavior: smooth;
+  }
+}
