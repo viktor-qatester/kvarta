@@ -165,7 +165,7 @@
 
 Что сделать: заявки принимает только `POST /api/lead` (JSON). Телефон: ввод с пробелами/скобками/дефисами; после нормализации — `+375` и ровно 9 цифр; посторонние символы и буквы — ошибка 400, запись не создаётся. Дедупликация 10 минут на нормализованный номер — в Postgres (advisory xact lock + `lead_dedup`, см. `lib/lead-service.ts`).
 
-Проверки без фреймворка: `npm run test:lead-api`. Скрипт создаёт схему `lead_api_test`, гоняет синтетические номера, в конце очищает тестовые строки. Окно 10 минут в тестах сдвигают UPDATE по `lead_dedup`, без изменения публичного API.
+Проверки без фреймворка: `npm run test:lead-api`. Скрипт `scripts/lead-api-check.ts` запускается через `node --experimental-strip-types` и локальный hook `@/` (`scripts/register-alias-hook.mjs`). Вызывает `validateLeadInput`, `createLeadInTransaction`, `countLeads` из приложения и handler `POST` из `app/api/lead/route.ts`. Схема `lead_api_test` для записей; для 400 проверяется счётчик `public.leads` без валидных тестовых INSERT в public. Сбой подключения: временно неверный `DATABASE_URL`, ожидается 500 JSON. В конце тестовые строки в `lead_api_test` очищаются.
 
 Ожидаемый результат: валидная заявка в `public.leads`; параллельные запросы одного номера — одна новая строка.
 

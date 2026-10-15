@@ -1,3 +1,4 @@
+import type { Pool, PoolClient } from "@neondatabase/serverless";
 import { createLeadPool } from "@/lib/db";
 import { createLeadInTransaction } from "@/lib/lead-service";
 import { validateLeadInput } from "@/lib/lead-validation";
@@ -21,16 +22,18 @@ export async function POST(request: Request) {
     );
   }
 
-  const pool = createLeadPool();
-  const client = await pool.connect();
+  let pool: Pool | undefined;
+  let client: PoolClient | undefined;
   try {
+    pool = createLeadPool();
+    client = await pool.connect();
     const result = await createLeadInTransaction(client, parsed.data, "public");
     if (result.status === "duplicate") {
       return Response.json(
         {
           error: "duplicate",
           message:
-            "Заявка с этим номером уже принята недавно. Повторите позже или позвоните в обжарку.",
+            "Заявка с этим номером уже принята недавно. Повторите позже.",
         },
         { status: 409 },
       );
@@ -42,7 +45,9 @@ export async function POST(request: Request) {
       { status: 500 },
     );
   } finally {
-    client.release();
-    await pool.end();
+    client?.release();
+    if (pool) {
+      await pool.end();
+    }
   }
 }

@@ -201,3 +201,34 @@
 - Production-сервер перезапущен на порту 3000 (старый процесс занимал порт).
 
 Push, merge и deploy не выполнялись.
+
+## 2026-10-15, независимый разбор кода этапа lead-api
+
+**Источник:** Виктор запросил у Cursor полное содержимое `lib/lead-service.ts`, `db/migrations/001_leads.sql`, `scripts/lead-api-check.mjs`, `lib/lead-validation.ts`, `app/api/lead/route.ts` и передал текст **ChatGPT** на проверку. Замечания ниже — по разбору ChatGPT. **Самостоятельное обнаружение этих недостатков Виктору не приписывается.**
+
+### Замечания разбора (до исправления, коммит `729646e`)
+
+1. **`scripts/lead-api-check.mjs`** — копии рабочих функций записи и нормализации телефона вместо вызова кода приложения.
+2. **`sampleLead`** — генератор `+37529` плюс ещё 9 цифр; после нормализации длина не совпадала с правилом «+375 и 9 цифр», положительные кейсы могли не проходить реальную `validateLeadInput`.
+3. **Проверка «invalid input not stored»** — не вызывала `validateLeadInput` и не проверяла HTTP `POST /api/lead`; только локальная нормализация и сравнение счётчика строк без попытки отправки.
+4. **`app/api/lead/route.ts`** — `createLeadPool()` и `pool.connect()` были вне `try`; при сбое подключения не было контролируемого JSON 500 и корректного освобождения только созданных ресурсов.
+5. **Сообщение 409** — «позвоните в обжарку» при отсутствии телефона в брифе.
+
+### Исправления и подтверждение
+
+- Тесты: `scripts/lead-api-check.ts` вызывает `validateLeadInput`, `createLeadInTransaction`, `countLeads`, `POST` из `app/api/lead/route.ts`; `scripts/lead-api-check.mjs` удалён; `npm run test:lead-api` — `node --experimental-strip-types` и `scripts/register-alias-hook.mjs` / `resolve-alias-hook.mjs` для `@/` и относительных импортов без расширения.
+- `sampleLead`: `+37529` + 7 цифр; в скрипте проверка прохождения `validateLeadInput`.
+- Отказ неверных данных: `validateLeadInput` на `{ name: "  ", phone: "abc", interest: "order" }`; `POST` с телефоном `+375abc` → 400; счётчик `public.leads` до/после без изменения; записи тестов — только схема `lead_api_test`.
+- `route.ts`: пул и клиент внутри `try`, `finally` с `client?.release()` и `pool.end()`; текст 409 без «позвоните».
+- Сбой БД: в конце `lead-api-check.ts` временно подменён `DATABASE_URL` на недоступный хост → `POST` вернул 500 и `{ error: "server" }`.
+
+### Проверки после исправлений
+
+- `npm run lint`: код 0.
+- `npx tsc --noEmit`: код 0.
+- `npm run build`: код 0, маршрут `/api/lead` dynamic.
+- `npm run test:lead-api`: 20 пунктов OK, в том числе 18 параллельных вызовов `createLeadInTransaction` — 1 created, 17 duplicate, 1 строка в `lead_api_test.leads`.
+
+Обновлены `README.md`, `docs/PROJECT_MEMORY.md`, `docs/BUILD_GUIDE.md` (описание тестового скрипта).
+
+Push, merge и deploy не выполнялись.

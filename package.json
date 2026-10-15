@@ -8,7 +8,7 @@
     "start": "next start",
     "lint": "eslint",
     "db:migrate": "node scripts/migrate.mjs",
-    "test:lead-api": "node scripts/lead-api-check.mjs"
+    "test:lead-api": "node --experimental-strip-types --import ./scripts/register-alias-hook.mjs scripts/lead-api-check.ts"
   },
   "dependencies": {
     "@neondatabase/serverless": "^1.2.0",
