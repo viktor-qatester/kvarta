@@ -18,7 +18,7 @@ export function Hero() {
           Четверг — обжарка. Пятница — ваш кофе
         </h1>
         <p className="mt-5 max-w-xl text-base leading-relaxed text-ink-muted sm:text-lg">
-          Обжариваем партиями по 5 кг. Зерно у вас на 1–3 день после обжарки.
+          Обжариваем партиями по 5 кг. Вы получите кофе через 1–3 дня после обжарки.
         </p>
         <a
           href="#assortiment"
@@ -31,7 +31,7 @@ export function Hero() {
       <figure className="relative aspect-[5/4] overflow-hidden rounded-2xl bg-[#cbb9a4] lg:aspect-auto lg:min-h-[22rem]">
         <Image
           src="/images/hero-kitchen.jpg"
-          alt="Чашка кофе, кемекс и пакет зерна на кухонном столе в утреннем свете"
+          alt="Керамическая чашка кофе, стеклянный кофейник с бумажным фильтром, пакет зерна и пиала с зёрнами на деревянном столе утренней кухни"
           fill
           priority
           sizes="(max-width: 1024px) 100vw, 50vw"
