@@ -1,0 +1,716 @@
+# Neon Postgres project setup
+
+## User
+
+Продолжаем тестовое задание «Кварта».
+Текущая задача: подготовить проект к подключению Neon Postgres.
+Не реализуй API и не переходи к следующему этапу самостоятельно.
+
+КОНТЕКСТ
+Проект: C:\Users\Victor\Documents\Kravta
+Стек: Next.js App Router, TypeScript, Tailwind.
+По последнему отчёту:
+— ветка feat/landing-ui;
+— коммит 5282ee9;
+— лендинг реализован, форма пока без отправки;
+— lint, tsc --noEmit и production build прошли;
+— локально запущен production-сервер на http://localhost:3000;
+— remote, push, merge и деплой не выполнялись.
+После коммита добавлялись полноразмерные скриншоты:
+не удаляй и не теряй их.
+
+Виктор принял визуальную основу по скриншотам.
+Остались две отложенные правки:
+1. Заменить фото первого экрана 338×304 качественным изображением.
+2. Расширить кнопку отправки на десктопе.
+Сейчас эти правки не выполняй.
+
+Выбрано размещение Vercel + Neon Postgres.
+Аккаунты и БД ещё не созданы.
+Виктор — начинающий QA: объясняй коротко и указывай,
+где действовать — браузер, Cursor, терминал.
+
+ПОРЯДОК РАБОТЫ
+1. Прочитай AGENTS.md, docs/kvarta-brief.pdf и последние записи
+   ai-log.md. Осмотри существующую форму, package.json и .gitignore.
+   Проверь фактические ветку и git status.
+   Не повторяй аудит каркаса, зависимостей и дизайна.
+
+2. Проверь, что секреты в .env.local исключены из Git.
+   Не открывай и не печатай значения существующих секретов.
+   Если правила исключения недостаточны — исправь минимально.
+   Для файла .env.example разрешено отдельное исключение.
+
+3. Создай .env.example только с безопасным шаблоном:
+   DATABASE_URL=
+   Не создавай выдуманные рабочие реквизиты.
+   Не используй NEXT_PUBLIC_ для подключения к БД.
+
+4. Дополни ai-log.md краткой записью:
+   — внешний вид принят Виктором;
+   — наставник просмотрел десктопный и мобильный скриншоты;
+   — взаимодействия проверены по отчёту Cursor,
+     наставник их независимо не запускал;
+   — выбран следующий этап: форма → API → Neon;
+   — подключение ещё не проверено.
+   Не дублируй уже существующие записи.
+
+5. Дай Виктору короткую инструкцию создания проекта Neon:
+   — официальный адрес сервиса;
+   — рекомендуемое имя проекта kvarta;
+   — как выбрать доступный европейский регион;
+   — как получить строку подключения для приложения;
+   — как вручную создать .env.local в корне проекта и записать
+     DATABASE_URL.
+   Сверяй меняющиеся названия пунктов с официальной документацией,
+   если доступен поиск. Если нет — обозначь это.
+   Не проси присылать строку подключения в чат или на скриншоте.
+   Не включай платные услуги и не создавай аккаунты за пользователя.
+
+ГРАНИЦЫ
+Не создавай пока таблицы, миграции, API и тестовые заявки.
+Не устанавливай драйверы и другие зависимости.
+Не меняй интерфейс, next.config.ts и существующие настройки.
+Не перезапускай сервер без необходимости.
+Не выполняй push, merge, deploy и npm audit fix.
+Не запускай сборку ради изменений только документации и env-шаблона.
+Не создавай дополнительные документы без необходимости.
+Не коммить на этом подготовительном шаге.
+
+В ОТЧЁТЕ
+— фактическая ветка и git status;
+— что изменено;
+— подтверждение исключения .env.local из Git без показа содержимого;
+— инструкция для браузера и Cursor;
+— что осталось сделать пользователю.
+
+После отчёта остановись и дождись подтверждения:
+«Neon создан, DATABASE_URL сохранён локально».
+Это ещё не означает, что соединение с БД проверено.
+
+## Assistant
+
+Подготовлю проект к Neon Postgres: сначала сверюсь с брифом, журналом и текущим git-состоянием, затем проверю, что секреты не попадают в репозиторий.
+
+### Tool Glob File Search
+
+```
+{"targetDirectory":"C:\\Users\\Victor\\Documents\\Kravta","globPattern":"ai-log.md"}
+```
+
+### Tool Glob File Search
+
+```
+{"targetDirectory":"C:\\Users\\Victor\\Documents\\Kravta","globPattern":"**/.gitignore"}
+```
+
+### Tool Glob File Search
+
+```
+{"targetDirectory":"C:\\Users\\Victor\\Documents\\Kravta","globPattern":"**/package.json"}
+```
+
+### Tool Glob File Search
+
+```
+{"targetDirectory":"C:\\Users\\Victor\\Documents\\Kravta","globPattern":"docs/**/*"}
+```
+
+### Tool Get Mcp Tools
+
+```
+{"server":"cursor","toolName":"WebSearch","toolCallId":"call-ba4d641e-68ed-4d9c-85dd-dcf7b052d59f-4\nfc_d46d15de-26ea-9f72-9a83-5ae951dcb059_4"}
+```
+
+### Tool Read File V2
+
+```
+{"path":"C:\\Users\\Victor\\Documents\\Kravta\\ai-log.md"}
+```
+
+### Tool Read File V2
+
+```
+{"path":"C:\\Users\\Victor\\Documents\\Kravta\\.gitignore"}
+```
+
+### Tool Read File V2
+
+```
+{"path":"C:\\Users\\Victor\\Documents\\Kravta\\package.json"}
+```
+
+### Tool Read File V2
+
+```
+{"path":"C:\\Users\\Victor\\Documents\\Kravta\\AGENTS.md"}
+```
+
+### Tool Run Terminal Command V2
+
+### Tool Glob File Search
+
+```
+{"targetDirectory":"C:\\Users\\Victor\\Documents\\Kravta","globPattern":"**/*brief*"}
+```
+
+### Tool Ripgrep Raw Search
+
+```
+{"pattern":"form|submit|заявк","path":"C:\\Users\\Victor\\Documents\\Kravta","glob":"*.{tsx,ts,jsx,js}","caseInsensitive":false,"headLimit":40,"multiline":false,"toolCallId":"call-0ddd606d-7473-4ebe-a14e-11afa60c6120-11\nfc_813bd250-6031-9098-9dae-6c3b897b6153_6","offset":0}
+```
+
+## Assistant
+
+Ветка совпадает
+
+### Tool Web Search
+
+```
+{"searchTerm":"Neon Postgres create project connection string DATABASE_URL documentation 2026","toolCallId":"call-76556b90-6099-4f50-84a3-179e02630253-14\nfc_9992b833-7c65-977b-bd72-97c24efbe667_2"}
+```
+
+## Assistant
+
+с отчётом, `.env.local` уже закрыт правилом `.env*`. Читаю бриф и форму и сверяю шаги Neon с актуальной документацией.
+
+### Tool Read File V2
+
+```
+{"path":"C:\\Users\\Victor\\Documents\\Kravta\\docs\\kvarta-brief.pdf"}
+```
+
+### Tool Read File V2
+
+```
+{"path":"C:\\Users\\Victor\\Documents\\Kravta\\components\\lead-form.tsx"}
+```
+
+### Tool Run Terminal Command V2
+
+### Tool Get Mcp Tools
+
+```
+{"server":"cursor","toolName":"WebFetch","toolCallId":"call-f29ff785-6f9f-4fdb-b6e3-0698406805db-16\nfc_7b01354b-50b2-9012-9873-c0fbe3c6b353_0"}
+```
+
+### Tool Web Search
+
+```
+{"searchTerm":"Neon console create project region Europe Frankfurt connection string site:neon.com/docs","toolCallId":"call-f29ff785-6f9f-4fdb-b6e3-0698406805db-17\nfc_7b01354b-50b2-9012-9873-c0fbe3c6b353_1"}
+```
+
+### Tool Web Fetch
+
+```
+{"url":"https://neon.com/docs/introduction/regions","toolCallId":"call-e84d58c3-bf28-4028-94b3-afccacd1c473-18\nfc_4a8bd0e0-31b5-9e71-91d0-5444df18b4f2_0"}
+```
+
+### Tool Web Fetch
+
+```
+{"url":"https://neon.com/docs/manage/projects","toolCallId":"call-e84d58c3-bf28-4028-94b3-afccacd1c473-19\nfc_4a8bd0e0-31b5-9e71-91d0-5444df18b4f2_1"}
+```
+
+### Tool Read File V2
+
+```
+{"path":"C:\\Users\\Victor\\.cursor\\projects\\c-Users-Victor-Documents-Kravta\\agent-tools\\9b6c35bd-0e90-4056-8a3e-ef70faa50819.txt","limit":180}
+```
+
+### Tool Web Search
+
+```
+{"searchTerm":"site:neon.com/docs Playing with Neon first project console sign up","toolCallId":"call-60e6461c-438e-4c17-a9e9-6973a9376f86-21\nfc_055e23d8-bf88-99b6-b3ce-d278685b247a_0"}
+```
+
+### Tool Web Search
+
+```
+{"searchTerm":"site:neon.com/docs \"Playing with Neon\" create a project","toolCallId":"call-a58cf21e-08b9-4958-9270-fc60f4ec0e35-22\nfc_60000579-173c-921b-8409-77126b206c2a_0"}
+```
+
+### Tool Web Fetch
+
+```
+{"url":"https://neon.com/docs/get-started/playing-with-neon","toolCallId":"call-c45995a8-e08d-4e51-a8ab-54c2ff9b891b-23\nfc_e65772fb-6e14-9d01-88d2-56cf9ff3131c_0"}
+```
+
+### Tool Web Fetch
+
+```
+{"url":"https://neon.com/docs/guides/nextjs","toolCallId":"call-c45995a8-e08d-4e51-a8ab-54c2ff9b891b-24\nfc_e65772fb-6e14-9d01-88d2-56cf9ff3131c_1"}
+```
+
+## Assistant
+
+Правило Git уже закрывает `.env*` и отдельно оставляет `.env.example`. Добавляю пустой шаблон и запись в журнал, затем проверю, что секретный файл по-прежнему не попадёт в репозиторий.
+
+### Tool Edit File V2
+
+### Tool Edit File V2
+
+### Tool Run Terminal Command V2
+
+## Assistant
+
+Подготовка к Neon сделана. Соединение с базой ещё не проверялось. API, таблицы и драйверы не добавлялись.
+
+## Ветка и git status
+
+Ветка `feat/landing-ui`, последний коммит `5282ee9`. Коммита на этом шаге нет.
+
+```
+## feat/landing-ui
+ M ai-log.md
+?? .env.example
+?? docs/screenshots/2026-10-15-landing-desktop-1440-full.png
+?? docs/screenshots/2026-10-15-landing-mobile-360-full.png
+```
+
+Полноразмерные скриншоты на месте.
+
+## Что изменено
+
+- Добавлен `.env.example` с одной пустой строкой `DATABASE_URL=`.
+- В `ai-log.md` записано: вид принят, наставник смотрел десктопный и мобильный скриншоты, взаимодействия сверены по отчёту Cursor и отдельно не запускались, следующий этап — форма → API → Neon, подключение ещё не проверено.
+- Форма по-прежнему только на экране: кнопка «Отправить заявку» выключена. Две отложенные правки (фото 338×304 и ширина кнопки на десктопе) не делались.
+
+`.gitignore` уже был достаточным, его не менял.
+
+## Секреты
+
+Файла `.env.local` в проекте нет, его содержимое не открывалось.
+
+`git check-ignore` для `.env.local` завершился с кодом 0: файл попадает под правило `.env*` и в Git не попадёт. `.env.example` под это правило не попадает (код 1) и виден в статусе как новый файл — так и задумано.
+
+## Что сделать вам
+
+Названия кнопок сверены с документацией Neon: [Manage projects](https://neon.com/docs/manage/projects), [Regions](https://neon.com/docs/introduction/regions), [Next.js](https://neon.com/docs/guides/nextjs). Страница «Playing with Neon», на которую документация отсылает для самого первого проекта, открылась с ошибкой 404. Если после входа форма называется чуть иначе, ориентируйтесь на поля имени и региона ниже.
+
+**Браузер**
+
+1. Откройте консоль: [https://console.neon.tech](https://console.neon.tech). Аккаунт создайте сами. Платный план не подключайте.
+2. На странице Projects нажмите **New Project**. Если форма создания уже открыта сразу после регистрации, заполняйте её.
+3. **Project name:** `kvarta`.
+4. **Region:** **AWS Europe (Frankfurt)**. Если этого пункта в списке нет — **AWS Europe (London)**. Регион потом не меняется. Новые проекты в регионах Azure документация создавать уже не даёт.
+5. В блоке **Services** оставьте включённым **Postgres database**. Object storage, Functions, AI gateway и Neon Auth не включайте.
+6. Нажмите **Create project**.
+7. В шапке консоли нажмите **Connect**. Откроется окно **Connect to your branch**. Ветку, базу и роль оставьте как есть. Connection pooling оставьте включённым: эта строка нужна приложению. Скопируйте её.
+
+Строку подключения в чат и на скриншот не присылайте: в ней есть пароль.
+
+**Cursor**
+
+1. В корне `C:\Users\Victor\Documents\Kravta` (рядом с `package.json`) создайте файл `.env.local`.
+2. Запишите одну строку: `DATABASE_URL=` и сразу после знака `=` вставьте скопированную строку. Сохраните.
+3. В терминале ничего запускать не нужно. Файл в коммит не добавляйте.
+
+Когда файл сохранён, напишите только эту фразу:
+
+«Neon создан, DATABASE_URL сохранён локально».
+
+## User
+
+Я создал .env.local и сохранил DATABASE_URL.
+Проверь правильность настройки и реальное подключение к Neon.
+
+Границы: только подключение. Не создавай таблицы, API, заявки.
+Не меняй интерфейс, не выполняй commit, push, merge или deploy.
+Сохрани текущие незакоммиченные изменения.
+
+1. Проверь наличие .env.local рядом с package.json.
+   Не выводи содержимое файла или значение DATABASE_URL.
+2. Проверь, что файл исключён из Git и не отслеживается.
+3. Программно загрузи переменную, проверь, что она непустая
+   и содержит корректный URL PostgreSQL, а не команду psql.
+   Выводи только результат проверки, без реквизитов.
+4. Проверь существующие зависимости. Если подходящего драйвера
+   нет, разрешаю установить @neondatabase/serverless.
+   Другие пакеты не обновляй.
+5. Выполни через драйвер один запрос SELECT 1 AS ok.
+   Для загрузки .env.local используй доступный механизм Node
+   или проекта; не передавай секрет в тексте команды.
+   Не отключай проверку TLS.
+6. При ошибке не печатай исходный объект ошибки, строку подключения
+   или пароль. Сообщи безопасное описание причины.
+   Не исправляй реквизиты догадками.
+7. Запиши фактический результат в ai-log.md.
+
+В отчёте:
+— найден ли файл;
+— исключён ли он из Git и отсутствует ли среди отслеживаемых;
+— прошла ли проверка формата;
+— выполнен ли SELECT 1 и получен ли ok=1;
+— какие файлы и зависимости изменены.
+После отчёта остановись.
+
+## Assistant
+
+Проверяю, что `.env.local` лежит рядом с `package.json`, не попадает в Git, и что `DATABASE_URL` — непустой адрес PostgreSQL. Саму строку и пароль выводить не буду.
+
+### Tool Run Terminal Command V2
+
+### Tool Read File V2
+
+```
+{"path":"C:\\Users\\Victor\\Documents\\Kravta\\package.json"}
+```
+
+### Tool Read File V2
+
+```
+{"path":"C:\\Users\\Victor\\Documents\\Kravta\\ai-log.md","offset":110}
+```
+
+## Assistant
+
+Файл лежит рядом с `package.json`, Git его не отслеживает. Драйвера базы в зависимостях нет — сначала проверю формат `DATABASE_URL`, без вывода самой строки.
+
+### Tool Run Terminal Command V2
+
+### Tool Run Terminal Command V2
+
+### Tool Get Mcp Tools
+
+```
+{"server":"cursor","toolName":"AwaitShell","toolCallId":"call-fd4012c5-9a27-436e-a6c8-6aa1d6d5d95a-33\nfc_a488a4e9-200d-9a6f-9ef9-17c086ed085a_0"}
+```
+
+### Tool Await
+
+```
+{"taskId":"424782","blockUntilMs":120000,"regex":"added \\d+ package|npm error|ERR!"}
+```
+
+### Tool Read File V2
+
+```
+{"path":"C:\\Users\\Victor\\.cursor\\projects\\c-Users-Victor-Documents-Kravta\\terminals\\424782.txt"}
+```
+
+### Tool Await
+
+```
+{"taskId":"424782","blockUntilMs":180000,"regex":"added \\d+ package|npm error|ERR!|packages in"}
+```
+
+### Tool Run Terminal Command V2
+
+### Tool Run Terminal Command V2
+
+### Tool Glob File Search
+
+```
+{"targetDirectory":"C:\\Users\\Victor\\AppData\\Local\\npm-cache\\_logs","globPattern":"*.log"}
+```
+
+### Tool Glob File Search
+
+```
+{"targetDirectory":"C:\\Users\\Victor\\Documents\\Kravta\\node_modules","globPattern":"@neondatabase/serverless/package.json"}
+```
+
+### Tool Read File V2
+
+```
+{"path":"C:\\Users\\Victor\\AppData\\Local\\npm-cache\\_logs\\2026-10-15T10_21_35_735Z-debug-0.log","offset":-80}
+```
+
+### Tool Await
+
+```
+{"taskId":"424782","blockUntilMs":120000,"regex":"added \\d+ package|npm error|ERR!"}
+```
+
+### Tool Ripgrep Raw Search
+
+```
+{"pattern":"@neondatabase/serverless","path":"C:\\Users\\Victor\\Documents\\Kravta\\package.json","caseInsensitive":false,"multiline":false,"toolCallId":"call-50bab9c8-03da-49df-957c-abc589971ac5-43\nfc_0822656c-73e0-9327-a6e8-3c46a8fff0c8_1","offset":0}
+```
+
+### Tool Read File V2
+
+```
+{"path":"C:\\Users\\Victor\\AppData\\Local\\npm-cache\\_logs\\2026-10-15T10_21_35_735Z-debug-0.log","offset":460}
+```
+
+### Tool Run Terminal Command V2
+
+### Tool Run Terminal Command V2
+
+### Tool Read File V2
+
+```
+{"path":"C:\\Users\\Victor\\Documents\\Kravta\\node_modules\\@neondatabase\\serverless\\package.json","limit":30}
+```
+
+### Tool Run Terminal Command V2
+
+### Tool Await
+
+```
+{"taskId":"424782","blockUntilMs":0}
+```
+
+### Tool Ripgrep Raw Search
+
+```
+{"pattern":"@neondatabase/serverless","path":"C:\\Users\\Victor\\Documents\\Kravta\\package-lock.json","caseInsensitive":false,"multiline":false,"toolCallId":"call-47fd4ed7-ced8-4269-8f04-f0e40c2db3af-50\nfc_4dfc4838-c2c0-9b15-a4b6-dc2582b041f5_1","offset":0}
+```
+
+### Tool Read File V2
+
+```
+{"path":"C:\\Users\\Victor\\.cursor\\projects\\c-Users-Victor-Documents-Kravta\\terminals\\424782.txt"}
+```
+
+### Tool Read File V2
+
+```
+{"path":"C:\\Users\\Victor\\Documents\\Kravta\\package.json"}
+```
+
+## Assistant
+
+Формат строки подходит, драйвер `@neondatabase/serverless` установлен. Запускаю один запрос `SELECT 1 AS ok`.
+
+### Tool Run Terminal Command V2
+
+### Tool Run Terminal Command V2
+
+### Tool Edit File V2
+
+## Assistant
+
+Подключение к Neon работает: запрос `SELECT 1 AS ok` вернул одну строку, и `ok` равен 1.
+
+## Файл и Git
+
+`.env.local` лежит в корне проекта, рядом с `package.json`. Содержимое и значение `DATABASE_URL` не выводились.
+
+Файл исключён из Git: `git check-ignore` завершился с кодом 0. Среди отслеживаемых файлов его нет, и в `git status` он не появляется.
+
+## Формат
+
+Переменная загружена через `process.loadEnvFile`. Ключ есть, значение непустое, это не команда `psql`, адрес разбирается как PostgreSQL с протоколом `postgresql`.
+
+## Запрос
+
+Драйвера в проекте не было, установлен только `@neondatabase/serverless` 1.2.0. Другие пакеты не обновлялись, `npm audit fix` не запускался.
+
+`SELECT 1 AS ok` выполнен через этот драйвер. Проверка TLS не отключалась. Результат: одна строка, `ok` равен 1.
+
+## Что изменено
+
+- `package.json` и `package-lock.json` — добавлен `@neondatabase/serverless`.
+- `ai-log.md` — записан фактический результат проверки.
+
+Прежние незакоммиченные файлы на месте: `.env.example` и полноразмерные скриншоты. Коммита не было. Таблицы, API и заявки не создавались.
+
+## User
+
+Подключение Neon проверено: SELECT 1 AS ok вернул ok=1.
+Перед реализацией API сохрани контекст и алгоритм повторения работы.
+
+Это только задача документации. Не меняй код приложения,
+не создавай таблицы, API, заявки и новые зависимости.
+Прочитай AGENTS.md, ai-log.md, README и историю Git.
+Сохрани все текущие изменения и скриншоты.
+
+Создай или обнови два файла без дублирования журналов:
+
+1. docs/PROJECT_MEMORY.md — краткая память проекта:
+— цель, стек, текущая ветка и фактические коммиты;
+— реализованный интерфейс, форма пока без отправки;
+— выбран Vercel + Neon Postgres;
+— Neon: проект kvarta, Frankfurt, Free plan;
+— DATABASE_URL хранится в игнорируемом .env.local;
+— установлен @neondatabase/serverless;
+— SELECT 1 выполнен Cursor успешно;
+— наставник независимо просмотрел скриншоты интерфейса,
+  но код, подключение и взаимодействия самостоятельно не проверял;
+— отложены замена фото 338×304 и расширение кнопки отправки;
+— следующий этап: POST /api/lead, серверная валидация,
+  сохранение, UTM и адрес входа, защита от повторов за 10 минут,
+  включая параллельные запросы;
+— push, merge и deploy только по команде Виктора.
+
+2. docs/BUILD_GUIDE.md — понятная инструкция повторения
+пройденных этапов для Виктора и будущих сайтов.
+
+Для каждого шага укажи:
+«Где действовать → что сделать → ожидаемый результат →
+как проверить».
+
+Включи:
+— чтение брифа и ограничение объёма;
+— создание Git и каркаса по фактической истории проекта;
+— сравнение эскизов и выбор Виктором «Утра на кухне»;
+— вёрстку, проверки lint/TypeScript/build и просмотр в браузере;
+— сохранение обычных и fullPage-скриншотов;
+— создание аккаунта и проекта Neon, выбор региона рядом
+  с будущим сервером приложения;
+— получение строки через Connect с pooling;
+— создание .env.local рядом с package.json;
+— проверку исключения секрета из Git;
+— установку драйвера и проверку SELECT 1.
+
+Используй только выполненные и подтверждённые действия.
+Не восстанавливай неизвестные команды по догадке:
+где точной команды нет, так и напиши.
+Объясни, что production-сервер требует новой сборки для изменений,
+а dev-сервер используется во время разработки.
+
+Отдельно перечисли ещё не выполненные этапы:
+API и таблицы, проверки формы и параллельных запросов,
+GitHub remote/push, Vercel, Lighthouse, финальный README.
+Не описывай их как уже пройденную инструкцию.
+
+Зафиксируй реальные уроки:
+— изображения макетов могут содержать выдуманные факты;
+— картинка макета не заменяет интерфейс;
+— маленький вырезанный кадр недостаточен для крупного изображения;
+— успешная сборка не подтверждает работу формы;
+— SELECT 1 подтверждает соединение, но не сохранение заявок.
+Другие ошибки бери только из ai-log.md и доступных свидетельств.
+
+В начале BUILD_GUIDE укажи:
+это восстановленная инструкция, а не дословный лог диалогов.
+Основной журнал — ai-log.md.
+Секреты, полные строки подключения и персональные данные не включай.
+
+Добавь в AGENTS.md короткое правило, если аналогичного ещё нет:
+в начале нового этапа читать PROJECT_MEMORY.md;
+после завершения этапа обновлять память, ai-log.md и BUILD_GUIDE,
+если появился новый воспроизводимый шаг.
+Не меняй остальные правила.
+
+В конце проверь согласованность трёх документов.
+Сборку и тесты ради документации не запускай.
+Коммит пока не делай.
+
+Отчёт: созданные/изменённые файлы, пробелы в восстановленной
+истории и git status. После отчёта остановись.
+
+## Assistant
+
+Это только документация. Сначала сверю правила, журнал, README и историю Git, чтобы записать только подтверждённые шаги.
+
+### Tool Read File V2
+
+```
+{"path":"C:\\Users\\Victor\\Documents\\Kravta\\AGENTS.md"}
+```
+
+### Tool Read File V2
+
+```
+{"path":"C:\\Users\\Victor\\Documents\\Kravta\\ai-log.md"}
+```
+
+### Tool Glob File Search
+
+```
+{"targetDirectory":"C:\\Users\\Victor\\Documents\\Kravta","globPattern":"README*"}
+```
+
+### Tool Glob File Search
+
+```
+{"targetDirectory":"C:\\Users\\Victor\\Documents\\Kravta","globPattern":"docs/**/*"}
+```
+
+### Tool Run Terminal Command V2
+
+### Tool Read File V2
+
+```
+{"path":"C:\\Users\\Victor\\Documents\\Kravta\\README.md"}
+```
+
+### Tool Read File V2
+
+```
+{"path":"C:\\Users\\Victor\\Documents\\Kravta\\.gitignore"}
+```
+
+### Tool Read File V2
+
+```
+{"path":"C:\\Users\\Victor\\Documents\\Kravta\\package.json"}
+```
+
+## Assistant
+
+Журнал и три коммита совпадают с отчётом. README всё ещё шаблон `create-next-app`. Пишу память и инструкцию только по подтверждённым шагам и отмечу команды, которых в истории нет.
+
+### Tool Edit File V2
+
+### Tool Edit File V2
+
+### Tool Edit File V2
+
+### Tool Edit File V2
+
+### Tool Edit File V2
+
+### Tool Read File V2
+
+```
+{"path":"C:\\Users\\Victor\\Documents\\Kravta\\AGENTS.md"}
+```
+
+### Tool Read File V2
+
+```
+{"path":"C:\\Users\\Victor\\Documents\\Kravta\\docs\\PROJECT_MEMORY.md"}
+```
+
+### Tool Read File V2
+
+```
+{"path":"C:\\Users\\Victor\\Documents\\Kravta\\docs\\BUILD_GUIDE.md"}
+```
+
+### Tool Run Terminal Command V2
+
+## Assistant
+
+Память проекта и инструкция повторения записаны. Код, сборка и коммит не трогались. Скриншоты на месте.
+
+## Файлы
+
+- Создан `docs/PROJECT_MEMORY.md`.
+- Создан `docs/BUILD_GUIDE.md`. В начале указано, что это восстановленная инструкция, а основной журнал — `ai-log.md`.
+- В `AGENTS.md` добавлено одно правило: в начале этапа читать память, после этапа обновлять память, журнал и инструкцию, если появился новый воспроизводимый шаг.
+- В `ai-log.md` добавлена короткая запись об этом шаге, без копии инструкции.
+
+Три документа согласованы: ветка `feat/landing-ui`, коммиты `1c255da`, `f9c0cb2`, `5282ee9`, форма без отправки, Neon `kvarta` / Frankfurt / Free, `SELECT 1` с `ok`, равным 1, отложенные правки вида и следующий этап `POST /api/lead`. Push, merge и deploy по-прежнему только по команде.
+
+## Пробелы в восстановленной истории
+
+Точных команд в журнале и Git нет, в инструкции они не дописаны:
+
+- инициализация Git и создание веток `feat/initial-setup` и `feat/landing-ui`;
+- полная строка `create-next-app` (известны флаги, неизвестны способ запуска и версия);
+- копирование брифа и перенос файлов из временной папки;
+- вызов `sharp` и команда съёмки скриншотов, включая полноразмерные;
+- текст одноразового скрипта `SELECT 1` (в репозиторий он не сохранялся).
+
+Страница Neon «Playing with Neon» открылась с кодом 404, поэтому подписи самого первого мастера не подтверждены. Запуск `npm run dev` в журнале не записан: страницы проверяли через `npm run build` и `npm start`. Регион Vercel ещё не выбран. `README.md` остаётся шаблоном `create-next-app`.
+
+## Git status
+
+```
+## feat/landing-ui
+ M AGENTS.md
+ M ai-log.md
+ M package-lock.json
+ M package.json
+?? .env.example
+?? docs/BUILD_GUIDE.md
+?? docs/PROJECT_MEMORY.md
+?? docs/screenshots/2026-10-15-landing-desktop-1440-full.png
+?? docs/screenshots/2026-10-15-landing-mobile-360-full.png
+```
