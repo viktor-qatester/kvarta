@@ -130,6 +130,22 @@ API: только `POST /api/lead`. Публичного просмотра за
 
 
 
-Редактура четырёх текстов — локальная ветка `edit/approved-copy` от `main` (`7e3f49d`, слияние PR №1). Push, merge и deploy этой ветки не делались. Сохранённый отчёт Lighthouse относится к замеру до этих правок. `README.md` обновлён под проект «Кварта» (не шаблон create-next-app).
+Редактура четырёх текстов — ветка `edit/approved-copy`, коммит `6153985`, от `main` (`7e3f49d`, слияние PR №1). Push, merge и deploy этой ветки не делались.
+
+
+
+Сайт: https://kvarta-five.vercel.app/. Репозиторий: https://github.com/viktor-qatester/kvarta. Neon: Frankfurt.
+
+
+
+Lighthouse, оба до текстовых правок: `docs/lighthouse/kvarta-five.vercel.app-20261015T161203.html` (16:12 МСК, 70/100/100/100) и `docs/lighthouse/kvarta-five.vercel.app-20261015T165047.html` (16:50 МСК, 73/100/100/100). Второй замер: DevTools, mobile, симуляция Slow 4G и CPU ×4, экранная эмуляция в конфиге выключена; полный кадр 412×4092 px.
+
+
+
+Заявка 16:04:01.661 МСК: телефон `+37544*****28`; UTM `qa-check` / `manual` / `release`, term и content пустые; `landing_url` с теми же тремя метками на `https://kvarta-five.vercel.app/`.
+
+
+
+Источник и утверждение четырёх текстов записаны в `ai-log.md`, здесь и в `README.md`: подруга-филолог, формулировки ChatGPT, сверка с брифом, утверждение Виктора. Согласованного текста про нейтральную упаковку и VPS AEZA в брифе и записях нет.
 
 

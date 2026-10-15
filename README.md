@@ -48,6 +48,21 @@ npm run test:lead-api
 
 Push, merge и deploy по умолчанию не выполнялись.
 
+## Публикация и проверки
+
+Сайт: https://kvarta-five.vercel.app/. Репозиторий: https://github.com/viktor-qatester/kvarta. Заявки хранятся в Neon Postgres, регион Frankfurt. `DATABASE_URL` остаётся серверной переменной.
+
+Мобильный Lighthouse снят в Chrome DevTools: форма mobile, симуляция Slow 4G (150 мс RTT, 1 638 Кбит/с) и CPU ×4. В конфиге экран Moto G Power 412×823, DPR 1,75, но `screenEmulation.disabled` равен true. Отчёты:
+
+- `docs/lighthouse/kvarta-five.vercel.app-20261015T161203.html` — 15.10.2026 16:12:03 МСК, оценки 70/100/100/100.
+- `docs/lighthouse/kvarta-five.vercel.app-20261015T165047.html` — 15.10.2026 16:50:47 МСК, оценки 73/100/100/100. Полный кадр в отчёте: ширина 412 px, высота страницы 4092 px.
+
+Оба замера сделаны до четырёх текстовых правок коммита `6153985`.
+
+Заявка в Neon, только чтение: 15.10.2026 16:04:01.661 МСК, телефон `+37544*****28`. `utm_source` — `qa-check`, `utm_medium` — `manual`, `utm_campaign` — `release`, `utm_term` и `utm_content` пустые. `landing_url`: `https://kvarta-five.vercel.app/?utm_source=qa-check&utm_medium=manual&utm_campaign=release`.
+
+Согласованного текста про нейтральную упаковку и VPS AEZA в брифе и записях проекта нет. Эти пункты не дописаны.
+
 ## Изображение первого экрана
 
 Файл: `public/images/hero-kitchen.jpg`, 1024×935, 142313 байт (JPEG, progressive, mozjpeg, quality 82). Пропорции исходника сохранены, кадр не растягивался.
