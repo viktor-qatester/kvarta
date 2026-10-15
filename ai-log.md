@@ -167,3 +167,37 @@
 
 - Сверка с `ai-log.md`, `README.md` и `git log`: три коммита `1c255da`, `f9c0cb2`, `5282ee9`, ветка `feat/landing-ui`. `README.md` остаётся шаблоном `create-next-app`.
 - Сборка и тесты не запускались.
+
+## 2026-10-15, коммит подготовки Neon
+
+Запрос: закоммитить подготовленные документы, env-шаблон, скриншоты и `@neondatabase/serverless` перед этапом API.
+
+### Что сделано
+
+- Коммит `91c5009` на `feat/landing-ui`: `AGENTS.md`, `ai-log.md`, `docs/BUILD_GUIDE.md`, `docs/PROJECT_MEMORY.md`, `.env.example`, полноразмерные скриншоты, `package.json` / `package-lock.json` с `@neondatabase/serverless`.
+- `.env.local` не добавлялся: `git check-ignore` для `.env.local` завершился с кодом 0.
+
+## 2026-10-15, POST /api/lead и форма
+
+Запрос: реализовать сохранение заявок в Neon, дедупликацию 10 минут, UTM, проверки и подключить форму.
+
+### Что сделано
+
+- Ветка `feat/lead-api` от `91c5009`.
+- Миграция `db/migrations/001_leads.sql`: таблицы `leads`, `lead_dedup`, индексы. Применение: `npm run db:migrate` (скрипт `scripts/migrate.mjs`, не при сборке и не при запросе).
+- `POST /api/lead`: валидация, параметризованные запросы через `@neondatabase/serverless` `Pool` и интерактивную транзакцию.
+- Дедупликация: `pg_advisory_xact_lock(hashtext(...))` на нормализованный телефон, `SELECT ... FOR UPDATE` по `lead_dedup`, сравнение `last_accepted_at` с окном 10 минут; при дубликате — `ROLLBACK` без INSERT; при успехе — INSERT в `leads`, затем UPSERT `lead_dedup`. Повтор не продлевает окно.
+- Телефон: допустимы цифры, `+`, пробелы, скобки, дефисы; буквы отклоняются; после нормализации `+375` и 9 цифр (`lib/lead-validation.ts`, константа `PHONE_NORMALIZED_PATTERN`).
+- UTM и `landing_url`: первый заход во вкладке в `sessionStorage` (`lib/attribution.ts`, `components/entry-attribution.tsx`).
+- Форма: отправка, состояния, ошибки полей, дубликат, сеть; кнопка на всю ширину на десктопе.
+- Проверки: `npm run test:lead-api` — схема `lead_api_test`, синтетические номера; 18 параллельных запросов одного номера дали 1 строку в БД и 17 ответов «duplicate» на уровне логики (1 created, 17 duplicate).
+
+### Проверки
+
+- `npm run db:migrate`: код 0, 4 операции.
+- `npm run lint`, `npx tsc --noEmit`, `npm run build`: код 0. Маршрут `/api/lead` — dynamic.
+- `npm run test:lead-api`: все проверки прошли; параллельный тест — 1 создано, 17 duplicate, 1 строка в `lead_api_test.leads`.
+- Браузер, http://localhost:3000 после `npm run build` и `npm start`: успешная заявка; повтор того же номера — сообщение о недавней заявке; ошибка телефона `+375abc` у поля; **симулированный** сбой сети через подмену `window.fetch` в CDP — сообщение об ошибке, поля «Bad» и «+375441112233» сохранены. UTM успешной заявки в БД: `browser-test`, `manual`, `lead-form`, landing с query без hash.
+- Production-сервер перезапущен на порту 3000 (старый процесс занимал порт).
+
+Push, merge и deploy не выполнялись.

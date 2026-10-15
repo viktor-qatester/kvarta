@@ -6,7 +6,9 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "db:migrate": "node scripts/migrate.mjs",
+    "test:lead-api": "node scripts/lead-api-check.mjs"
   },
   "dependencies": {
     "@neondatabase/serverless": "^1.2.0",

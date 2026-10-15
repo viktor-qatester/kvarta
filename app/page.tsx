@@ -2,6 +2,7 @@ import { Catalog } from "@/components/catalog";
 import { Contacts } from "@/components/contacts";
 import { Delivery } from "@/components/delivery";
 import { Hero } from "@/components/hero";
+import { EntryAttribution } from "@/components/entry-attribution";
 import { LeadIntentProvider } from "@/components/lead-intent";
 import { SiteHeader } from "@/components/site-header";
 import { Story } from "@/components/story";
@@ -18,6 +19,7 @@ export default function Home() {
       </a>
       <SiteHeader />
       <LeadIntentProvider>
+        <EntryAttribution />
         <main id="osnovnoe" className="mx-auto max-w-6xl px-5 py-10 sm:px-8 sm:py-14">
           <div id="top" className="flex flex-col gap-16 sm:gap-20">
             <Hero />
